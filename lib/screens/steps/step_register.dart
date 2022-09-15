@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../globals.dart' as globals;
 import '../../components/stepper/custom_stepper.dart';
 import '../../components/widget/header_stepper.dart';
+import '../../components/form/button.dart';
 import './screen_form_one.dart';
 import './screen_form_two.dart';
 import './screen_form_three.dart';
@@ -15,7 +17,8 @@ class StepRegisterScreen extends StatefulWidget {
 class _StepRegisterScreen extends State<StepRegisterScreen> {
   int _currentStep = 0;    
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {    
+
     return Scaffold(
         appBar: HeaderStepper(),
         body: Container(
@@ -29,17 +32,15 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                   onStepContinue: continued,
                   onStepCancel: null,
                   controlsBuilder: (BuildContext ctx, ControlsDetailsX dtl){
-                    return Row(
-                      children: <Widget>[
-                        TextButton(
-                          onPressed: dtl.onStepContinue,
-                          child: Text('NEXT'),
-                        ),
-                        TextButton(
-                          onPressed: dtl.onStepCancel,
-                          child: Text(''),
-                        ),
-                      ],
+                    return Center(
+                      child:SizedBox(
+                        width: double.infinity,                      
+                        child: SimpleElevatedButton(
+                          color: globals.firstColor,
+                          child:  _currentStep >= 2 ? Text("Submit",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)):Text("Next",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
+                          onPressed: dtl.onStepContinue
+                        )
+                      )
                     ); 
                   },
                   steps: <StepX>[
@@ -59,7 +60,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                       title: Text('Professional Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 2 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),
                       content: screenFormThree(),
                       isActive:_currentStep >= 0,
-                      state: _currentStep >= 3 ? StepStateX.complete : StepStateX.disabled,
+                      state: _currentStep >= 2 ? StepStateX.complete : StepStateX.disabled,
                     ),
                   ],
                 ),
