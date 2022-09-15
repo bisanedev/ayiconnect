@@ -60,7 +60,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                       title: Text('Professional Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 2 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),
                       content: screenFormThree(),
                       isActive:_currentStep >= 0,
-                      state: _currentStep >= 2 ? StepStateX.complete : StepStateX.disabled,
+                      state: _currentStep >= 3 ? StepStateX.complete : StepStateX.disabled,
                     ),
                   ],
                 ),
