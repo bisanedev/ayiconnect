@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../components/stepper/custom_stepper.dart';
+import '../../components/widget/header_stepper.dart';
 import './screen_form_one.dart';
 import './screen_form_two.dart';
 import './screen_form_three.dart';
@@ -16,7 +17,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: null,
+        appBar: HeaderStepper(),
         body: Container(
           child: Column(
             children: [
