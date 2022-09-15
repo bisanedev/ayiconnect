@@ -6,7 +6,6 @@ import '../../components/form/button.dart';
 import './screen_form_one.dart';
 import './screen_form_two.dart';
 import './screen_form_three.dart';
-import './register_model.dart';
 
 class StepRegisterScreen extends StatefulWidget {  
   const StepRegisterScreen({Key? key}) : super(key: key);
@@ -17,6 +16,7 @@ class StepRegisterScreen extends StatefulWidget {
 
 class _StepRegisterScreen extends State<StepRegisterScreen> {
   int _currentStep = 0;
+  int? role;
   
   @override
   Widget build(BuildContext context) {    
@@ -35,8 +35,13 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                   onStepCancel: null,
                   controlsBuilder: (BuildContext ctx, ControlsDetailsX dtl){
                     return _currentStep == 0 ? 
-                        Center(
-                          child:Text("")
+                        screenFormOne(
+                          selectHelper:() {
+                            dtl.onStepContinue!();
+                          },
+                          selectJob:() {
+                            dtl.onStepContinue!();                          
+                          }
                         ):
                         Center(
                           child:SizedBox(
@@ -52,7 +57,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                   steps: <StepX>[
                     StepX(
                       title: Text('Select\n Your Role',style: TextStyle(fontSize: 8,color: _currentStep >= 0 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
-                      content: screenFormOne(),                    
+                      content: Text(''),                    
                       isActive: _currentStep >= 0,
                       state: _currentStep >= 1 ? StepStateX.complete : StepStateX.disabled,
                     ),
