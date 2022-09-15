@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
 
@@ -236,59 +235,7 @@ class StepperCustom extends StatefulWidget {
   ///
   /// If null, the 'cancel' button will be disabled.
   final VoidCallback? onStepCancel;
-
-  /// The callback for creating custom controls.
-  ///
-  /// If null, the default controls from the current theme will be used.
-  ///
-  /// This callback which takes in a context and a [ControlsDetails] object, which
-  /// contains step information and two functions: [onStepContinue] and [onStepCancel].
-  /// These can be used to control the stepper. For example, reading the
-  /// [ControlsDetails.currentStep] value within the callback can change the text
-  /// of the continue or cancel button depending on which step users are at.
-  ///
-  /// {@tool dartpad}
-  /// Creates a stepper control with custom buttons.
-  ///
-  /// ```dart
-  /// Widget build(BuildContext context) {
-  ///   return Stepper(
-  ///     controlsBuilder:
-  ///       (BuildContext context, ControlsDetails details) {
-  ///          return Row(
-  ///            children: <Widget>[
-  ///              TextButton(
-  ///                onPressed: details.onStepContinue,
-  ///                child: Text('Continue to Step ${details.stepIndex + 1}'),
-  ///              ),
-  ///              TextButton(
-  ///                onPressed: details.onStepCancel,
-  ///                child: Text('Back to Step ${details.stepIndex - 1}'),
-  ///              ),
-  ///            ],
-  ///          );
-  ///       },
-  ///     steps: const <Step>[
-  ///       Step(
-  ///         title: Text('A'),
-  ///         content: SizedBox(
-  ///           width: 100.0,
-  ///           height: 100.0,
-  ///         ),
-  ///       ),
-  ///       Step(
-  ///         title: Text('B'),
-  ///         content: SizedBox(
-  ///           width: 100.0,
-  ///           height: 100.0,
-  ///         ),
-  ///       ),
-  ///     ],
-  ///   );
-  /// }
-  /// ```
-  /// ** See code in examples/api/lib/material/stepper/stepper.controls_builder.0.dart **
-  /// {@end-tool}
+  
   final ControlsWidgetBuilder? controlsBuilder;
 
   /// The elevation of this stepper's [Material] when [type] is [StepperTypeX.horizontal].
@@ -398,7 +345,8 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     }
   }
 
-  Widget _buildCircle(int index, bool oldState) {
+  Widget _buildCircle(int index, bool oldState,int current) {
+    
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10.0),
       width: _kStepSize,
@@ -407,7 +355,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
         curve: Curves.fastOutSlowIn,
         duration: kThemeAnimationDuration,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: current >= index ? Colors.white:current == index ?Colors.white:Color(0xffe5e5ea),
           shape: BoxShape.circle,
         ),
         child: Center(
@@ -440,10 +388,10 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildIcon(int index) {
+  Widget _buildIcon(int index,int current) {
     if (widget.steps[index].state != _oldStates[index]) {
       return AnimatedCrossFade(
-        firstChild: _buildCircle(index, true),
+        firstChild: _buildCircle(index, true,current),
         secondChild: _buildTriangle(index, true),
         firstCurve: const Interval(0.0, 0.6, curve: Curves.fastOutSlowIn),
         secondCurve: const Interval(0.4, 1.0, curve: Curves.fastOutSlowIn),
@@ -453,7 +401,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
       );
     } else {
       if (widget.steps[index].state != StepStateX.error) {
-        return _buildCircle(index, false);
+        return _buildCircle(index, false , current);
       } else {
         return _buildTriangle(index, false);
       }
@@ -630,7 +578,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     return const SizedBox.shrink();
   }
 
-  Widget _buildHorizontal() {
+  Widget _buildHorizontal(int isCurrent) {
     final List<Widget> children = <Widget>[      
       for (int i = 0; i < widget.steps.length; i += 1) ...<Widget>[
         InkResponse(
@@ -640,7 +588,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
             SizedBox(
-              child: Center(child: _buildIcon(i)),
+              child: Center(child: _buildIcon(i,isCurrent)),
             ),
             Container(
               margin: const EdgeInsetsDirectional.only(bottom: 10.0),
@@ -726,13 +674,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
       }
       return true;
     }());    
-    return _buildHorizontal();
-    // switch (widget.type) {
-    //   case StepperTypeX.vertical:
-    //     return _buildVertical();
-    //   case StepperTypeX.horizontal:
-    //     return _buildHorizontal();
-    // }
+    return _buildHorizontal(widget.currentStep);
   }
 }
 

@@ -13,7 +13,7 @@ class HeaderStepper extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {        
     return Container(      
-      height: 20,      
+      height: 40,      
       decoration: BoxDecoration(        
         color: globals.firstColor,
       )    
