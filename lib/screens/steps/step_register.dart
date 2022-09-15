@@ -38,7 +38,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                         child: SimpleElevatedButton(
                           color: globals.firstColor,
                           child:  _currentStep >= 2 ? Text("Submit",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)):Text("Next",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
-                          onPressed: dtl.onStepContinue
+                          onPressed: _currentStep == 2 ? submit:dtl.onStepContinue
                         )
                       )
                     ); 
@@ -69,6 +69,10 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
           ),
         )
     );
+  }
+
+  submit(){
+    print("Sending...");
   }
 
   tapped(int step){
