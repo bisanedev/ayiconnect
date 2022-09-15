@@ -44,19 +44,19 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                   },
                   steps: <StepX>[
                     StepX(
-                      title: Text('Select\n Your Role',style: TextStyle(fontSize: 8,color: Colors.white),textAlign: TextAlign.center),                      
+                      title: Text('Select\n Your Role',style: TextStyle(fontSize: 8,color: _currentStep >= 0 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
                       content: screenFormOne(),                    
                       isActive: _currentStep >= 0,
                       state: _currentStep >= 1 ? StepStateX.complete : StepStateX.disabled,
                     ),
                     StepX(
-                      title: Text('Personal Information',style: TextStyle(fontSize: 8,color: Colors.white),textAlign: TextAlign.center),
+                      title: Text('Personal Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 1 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),
                       content: screenFormTwo(),
                       isActive: _currentStep >= 0,
                       state: _currentStep >= 2 ? StepStateX.complete : StepStateX.disabled,
                     ),
                     StepX(
-                      title: Text('Professional Information',style: TextStyle(fontSize: 8,color: Colors.white),textAlign: TextAlign.center),
+                      title: Text('Professional Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 2 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),
                       content: screenFormThree(),
                       isActive:_currentStep >= 0,
                       state: _currentStep >= 3 ? StepStateX.complete : StepStateX.disabled,
