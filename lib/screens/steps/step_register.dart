@@ -6,6 +6,7 @@ import '../../components/form/button.dart';
 import './screen_form_one.dart';
 import './screen_form_two.dart';
 import './screen_form_three.dart';
+import './register_model.dart';
 
 class StepRegisterScreen extends StatefulWidget {  
   const StepRegisterScreen({Key? key}) : super(key: key);
@@ -15,7 +16,8 @@ class StepRegisterScreen extends StatefulWidget {
 }
 
 class _StepRegisterScreen extends State<StepRegisterScreen> {
-  int _currentStep = 0;    
+  int _currentStep = 0;
+  
   @override
   Widget build(BuildContext context) {    
 
@@ -32,16 +34,20 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                   onStepContinue: continued,
                   onStepCancel: null,
                   controlsBuilder: (BuildContext ctx, ControlsDetailsX dtl){
-                    return Center(
-                      child:SizedBox(
-                        width: double.infinity,                      
-                        child: SimpleElevatedButton(
-                          color: globals.firstColor,
-                          child:  _currentStep >= 2 ? Text("Submit",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)):Text("Next",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
-                          onPressed: _currentStep == 2 ? submit:dtl.onStepContinue
-                        )
-                      )
-                    ); 
+                    return _currentStep == 0 ? 
+                        Center(
+                          child:Text("")
+                        ):
+                        Center(
+                          child:SizedBox(
+                            width: double.infinity,                      
+                            child: SimpleElevatedButton(
+                              color: globals.firstColor,
+                              child: _currentStep >= 2 ? Text("Submit",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)):Text("Next",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
+                              onPressed: _currentStep == 2 ? submit:dtl.onStepContinue
+                            )
+                          )
+                        );
                   },
                   steps: <StepX>[
                     StepX(
