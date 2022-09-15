@@ -44,7 +44,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                   },
                   steps: <StepX>[
                     StepX(
-                      title: Text('Select Your Role',style: TextStyle(fontSize: 8),textAlign: TextAlign.center),                      
+                      title: Text('Select\n Your Role',style: TextStyle(fontSize: 8),textAlign: TextAlign.center),                      
                       content: screenFormOne(),                    
                       isActive: _currentStep >= 0,
                       state: _currentStep >= 0 ? StepStateX.complete : StepStateX.disabled,
