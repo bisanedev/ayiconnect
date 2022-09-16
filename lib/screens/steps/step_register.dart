@@ -15,9 +15,10 @@ class StepRegisterScreen extends StatefulWidget {
 }
 
 class _StepRegisterScreen extends State<StepRegisterScreen> {
-  int _currentStep = 0;
-  int? role;
-  
+  int _currentStep = 0;  
+  VoidCallback? _onStepContinue;
+  VoidCallback? _onStepCancel;
+
   @override
   Widget build(BuildContext context) {    
 
@@ -34,30 +35,21 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                   onStepContinue: continued,
                   onStepCancel: null,
                   controlsBuilder: (BuildContext ctx, ControlsDetailsX dtl){
-                    return _currentStep == 0 ? 
-                        screenFormOne(
-                          selectHelper:() {
-                            dtl.onStepContinue!();
-                          },
-                          selectJob:() {
-                            dtl.onStepContinue!();                          
-                          }
-                        ):
-                        Center(
-                          child:SizedBox(
-                            width: double.infinity,                      
-                            child: SimpleElevatedButton(
-                              color: globals.firstColor,
-                              child: _currentStep >= 2 ? Text("Submit",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)):Text("Next",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
-                              onPressed: _currentStep == 2 ? submit:dtl.onStepContinue
-                            )
-                          )
-                        );
+                    _onStepContinue = dtl.onStepContinue;
+                    _onStepCancel = dtl.onStepCancel;
+                    return SizedBox.shrink();                    
                   },
                   steps: <StepX>[
                     StepX(
                       title: Text('Select\n Your Role',style: TextStyle(fontSize: 8,color: _currentStep >= 0 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
-                      content: Text(''),                    
+                      content:  screenFormOne(
+                          selectHelper:() {
+                            _onStepContinue!();
+                          },
+                          selectJob:() {
+                            _onStepContinue!();                          
+                          }
+                      ),                    
                       isActive: _currentStep >= 0,
                       state: _currentStep >= 1 ? StepStateX.complete : StepStateX.disabled,
                     ),
