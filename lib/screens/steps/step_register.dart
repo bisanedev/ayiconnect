@@ -19,6 +19,19 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
   int _currentStep = 0;  
   VoidCallback? _onStepContinue;
   //VoidCallback? _onStepCancel;
+  /*--- register variable ---*/
+  int? role;
+  String? fullName;
+  int? gender;
+  String? dateBirth;
+  String? phoneNumber;
+  String? currentLoc;
+  String? occupation;
+  String? company;
+  List<int>? spoken;
+  int? service;
+  String? aboutYou;
+  /*--- end of register variable ---*/
 
   @override
   Widget build(BuildContext context) {    
@@ -43,10 +56,13 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                     StepX(
                       title: Text('Select\n Your Role',style: TextStyle(fontSize: 8,color: _currentStep >= 0 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
                       content:  ScreenFormOne(
+                          roleSelected: role,
                           selectHelper:() {
+                            setState(() { role=0; } );
                             _onStepContinue!();
                           },
                           selectJob:() {
+                            setState(() {role=1; });
                             _onStepContinue!();                          
                           }
                       ),

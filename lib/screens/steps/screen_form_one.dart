@@ -2,23 +2,13 @@ import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
 import '../../components/form/button.dart';
 
-class ScreenFormOne extends StatefulWidget { 
+class ScreenFormOne extends StatelessWidget { 
   final Function? selectHelper;
   final Function? selectJob; 
-  const ScreenFormOne({Key? key,this.selectHelper,this.selectJob}) : super(key: key);
+  final int? roleSelected;
+  const ScreenFormOne({Key? key,this.selectHelper,this.selectJob,this.roleSelected}) : super(key: key);
 
-  @override
-  State<ScreenFormOne> createState() => _ScreenFormOne();
-}
-
-class _ScreenFormOne extends State<ScreenFormOne> {
-
-  @override
-  void initState() {        
-    super.initState();      
-  }
-
-  @override
+    @override
   Widget build(BuildContext context) {   
     return Column(
       children: <Widget>[
@@ -41,14 +31,22 @@ class _ScreenFormOne extends State<ScreenFormOne> {
                     color: globals.firstColor,
                     elevation: 0,
                     borderRadius: 10,                  
-                    onPressed: widget.selectHelper as void Function()?,
-                    child: const Text("Find a Helper",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
+                    onPressed: selectHelper as void Function()?,
+                    child: roleSelected == 0 ? 
+                    Row(
+                      children: [
+                        Icon(Icons.done,color:Colors.white,size:globals.fontSize),
+                        const SizedBox(width: 8),
+                        Text("Find a Helper",style:TextStyle(fontSize: globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal))
+                      ]
+                    )
+                    :Text("Find a Helper",style:TextStyle(fontSize: globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal)),
                   )
                 ]
               ),
             )
           ),
-          const SizedBox(height:30),
+          const SizedBox(height:20),
           Center(
             child:Container(
               height: 300,
@@ -67,8 +65,16 @@ class _ScreenFormOne extends State<ScreenFormOne> {
                     color: globals.secondColor,
                     elevation: 0,
                     borderRadius: 10,                  
-                    onPressed: widget.selectJob as void Function()?,
-                    child: const Text("Find for a Job",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
+                    onPressed: selectJob as void Function()?,
+                    child: roleSelected == 1 ? 
+                    Row(
+                      children:[
+                        Icon(Icons.done,color:Colors.white,size:globals.fontSize),
+                        const SizedBox(width: 8),
+                        Text("Find for a Job",style:TextStyle(fontSize: globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal))
+                      ]
+                    )
+                    : Text("Find for a Job",style:TextStyle(fontSize: globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal)),
                   )
                 ]
               ),
@@ -76,6 +82,5 @@ class _ScreenFormOne extends State<ScreenFormOne> {
           )
       ],
     );
-  }  
-
+  }
 }
