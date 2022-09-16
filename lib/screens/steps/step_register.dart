@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:intl/intl.dart';
 import '../../globals.dart' as globals;
 import '../../components/stepper/custom_stepper.dart';
 import '../../components/widget/header_stepper.dart';
@@ -18,15 +19,16 @@ class StepRegisterScreen extends StatefulWidget {
 
 class _StepRegisterScreen extends State<StepRegisterScreen> {
   int _currentStep = 0;  
-  VoidCallback? _onStepContinue;
-  TextEditingController fullNameController = TextEditingController();   
+  VoidCallback? _onStepContinue;  
   DateTime now = new DateTime.now();
+  DateFormat calendarFormat = DateFormat("dd/MM/yyyy");
+  DateTime? currentDateBirth;
   //VoidCallback? _onStepCancel;
   /*--- register form variable ---*/
   int? role;
-  String? fullName;
+  TextEditingController fullName = TextEditingController();
   int? gender;
-  DateTime? dateBirth;
+  String? dateBirth;
   String? phoneNumber;
   String? currentLoc;
   String? occupation;
@@ -75,21 +77,24 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                     StepX(
                       title: Text('Personal Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 1 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),
                       content: ScreenFormTwo(
-                        fullNameController:fullNameController,                        
+                        fullNameController:fullName,                        
                         nextForm:() {
                           _onStepContinue!();
                         },
+                        calendarValue:dateBirth,
                         calendarOnPressed:(){
                           DatePicker.showDatePicker(context,
                               showTitleActions: true,
                               minTime: DateTime(1930, 3, 5),
                               maxTime: DateTime(now.year, now.month, now.day),                            
-                              onConfirm: (date) {                                
+                              onConfirm: (date) {  
+                                String stringDate = calendarFormat.format(date);                            
                                 setState(() {
-                                  dateBirth = date;
+                                  dateBirth = stringDate;
+                                  currentDateBirth = date;
                                 });
                               }, 
-                              currentTime: DateTime.now(), 
+                              currentTime: currentDateBirth, 
                               locale: LocaleType.en
                           );
                         }
@@ -117,6 +122,8 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
 
   submitForm(){
     print("Sending...");
+    print(fullName.text);
+    print(dateBirth);
   }
 
   tapped(int step){

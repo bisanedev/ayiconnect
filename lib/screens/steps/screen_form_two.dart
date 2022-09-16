@@ -40,17 +40,18 @@ class ScreenFormTwo extends StatelessWidget {
         const SizedBox(height: 8),
         InputLikeText(                    
           iconData: Icons.calendar_month_outlined,
-          hintText: "MM/DD/YYYY",                 
+          hintText: "MM/DD/YYYY",
+          value: calendarValue,                
           onPressed:calendarOnPressed as void Function()?
         ),
         const SizedBox(height: 15),
         SizedBox(
             width:double.infinity,                      
             child:SimpleElevatedButton(
-                  color: globals.firstColor,
-                  borderRadius: 10,
-                  onPressed: nextForm as void Function()?,
-                  child: Text("Next",style:TextStyle(fontSize: globals.fontSize ,color: Colors.white,fontWeight: FontWeight.normal))                  
+                color: globals.firstColor,
+                borderRadius: 10,
+                onPressed: nextForm as void Function()?,
+                child: Text("Next",style:TextStyle(fontSize: globals.fontSize ,color: Colors.white,fontWeight: FontWeight.normal))                  
             )
         )             
       ]
