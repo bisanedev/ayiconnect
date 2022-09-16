@@ -99,6 +99,12 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                               currentTime: currentDateBirth, 
                               locale: LocaleType.en
                           );
+                        },
+                        phoneValue:phoneNumber,
+                        phoneOnChange:(String value) {
+                          setState(() {
+                            phoneNumber = value;
+                          });
                         }
                       ),
                       isActive: _currentStep >= 0,
@@ -127,6 +133,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
     print(fullName.text);
     print(gender == 0 ? "Male" : gender == 1 ? "Female":"Others"); 
     print(dateBirth);
+    print(phoneNumber);
   }
 
   tapped(int step){
