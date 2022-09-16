@@ -2,24 +2,23 @@ import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
 import '../../components/form/button.dart';
 import '../../components/form/Input_text.dart';
+import '../../components/form/Input_like_text.dart';
 import '../../components/form/Input_gender.dart';
 
 enum Gender { male, female, others }
 
-class ScreenFormTwo extends StatefulWidget {  
+class ScreenFormTwo extends StatelessWidget {  
   final Function? nextForm;
-  const ScreenFormTwo({Key? key,this.nextForm}) : super(key: key);
+  final TextEditingController? fullNameController;
+  final String? calendarValue;
+  final Function? calendarOnPressed;  
 
-  @override
-   State<ScreenFormTwo> createState() => _ScreenFormTwo();
-}
-
-class _ScreenFormTwo extends State<ScreenFormTwo> {    
-
-  @override
-  void initState() {        
-    super.initState();      
-  }
+  const ScreenFormTwo({Key? key,
+    this.nextForm,
+    this.fullNameController,
+    this.calendarValue,
+    this.calendarOnPressed
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {   
@@ -28,18 +27,29 @@ class _ScreenFormTwo extends State<ScreenFormTwo> {
       children:<Widget>[        
         Text('Full Name',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
-        const InputText(hintText: "Your full name"),
+        InputText(
+          hintText: "Your full name",
+          controller: fullNameController,
+        ),
         const SizedBox(height: 15),
         Text('Select Your Gender',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),   
         const InputGender(),
+        const SizedBox(height: 15),
+        Text('Choose Your Date of Birth',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
+        InputLikeText(                    
+          iconData: Icons.calendar_month_outlined,
+          hintText: "MM/DD/YYYY",                 
+          onPressed:calendarOnPressed as void Function()?
+        ),
         const SizedBox(height: 15),
         SizedBox(
             width:double.infinity,                      
             child:SimpleElevatedButton(
                   color: globals.firstColor,
                   borderRadius: 10,
-                  onPressed: widget.nextForm as void Function()?,
+                  onPressed: nextForm as void Function()?,
                   child: Text("Next",style:TextStyle(fontSize: globals.fontSize ,color: Colors.white,fontWeight: FontWeight.normal))                  
             )
         )             

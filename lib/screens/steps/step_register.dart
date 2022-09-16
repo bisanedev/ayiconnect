@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import '../../globals.dart' as globals;
 import '../../components/stepper/custom_stepper.dart';
 import '../../components/widget/header_stepper.dart';
@@ -18,12 +19,14 @@ class StepRegisterScreen extends StatefulWidget {
 class _StepRegisterScreen extends State<StepRegisterScreen> {
   int _currentStep = 0;  
   VoidCallback? _onStepContinue;
+  TextEditingController fullNameController = TextEditingController();   
+  DateTime now = new DateTime.now();
   //VoidCallback? _onStepCancel;
-  /*--- register variable ---*/
+  /*--- register form variable ---*/
   int? role;
   String? fullName;
   int? gender;
-  String? dateBirth;
+  DateTime? dateBirth;
   String? phoneNumber;
   String? currentLoc;
   String? occupation;
@@ -31,7 +34,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
   List<int>? spoken;
   int? service;
   String? aboutYou;
-  /*--- end of register variable ---*/
+  /*--- end of register form variable ---*/
 
   @override
   Widget build(BuildContext context) {    
@@ -72,8 +75,23 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                     StepX(
                       title: Text('Personal Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 1 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),
                       content: ScreenFormTwo(
+                        fullNameController:fullNameController,                        
                         nextForm:() {
                           _onStepContinue!();
+                        },
+                        calendarOnPressed:(){
+                          DatePicker.showDatePicker(context,
+                              showTitleActions: true,
+                              minTime: DateTime(1930, 3, 5),
+                              maxTime: DateTime(now.year, now.month, now.day),                            
+                              onConfirm: (date) {                                
+                                setState(() {
+                                  dateBirth = date;
+                                });
+                              }, 
+                              currentTime: DateTime.now(), 
+                              locale: LocaleType.en
+                          );
                         }
                       ),
                       isActive: _currentStep >= 0,

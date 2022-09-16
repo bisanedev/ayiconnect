@@ -22,12 +22,13 @@ class _InputGender extends State<InputGender> {
   @override
   Widget build(BuildContext context) {    
     return SizedBox(      
-      height: 50.0,
+      height: 53.0,
       child: ListView(
       scrollDirection: Axis.horizontal,      
       children: [
         Container(
-          height: 50,
+          height: 55,
+          alignment: Alignment.center,
           width: 110,
           decoration: BoxDecoration(
             color: _gender == Gender.male ? globals.secondColor:Colors.white,
@@ -60,7 +61,8 @@ class _InputGender extends State<InputGender> {
         ),
         const SizedBox(width: 17),
         Container(
-          height: 50,
+          height: 55,
+          alignment: Alignment.center,
           width: 110,
           decoration: BoxDecoration(
             color: _gender == Gender.female ? globals.secondColor:Colors.white,
@@ -93,7 +95,8 @@ class _InputGender extends State<InputGender> {
         ),
         const SizedBox(width: 17),
         Container(
-          height: 50,
+          height: 55,
+          alignment: Alignment.center,
           width: 110,
           decoration: BoxDecoration(
             color: _gender == Gender.others ? globals.secondColor:Colors.white,
