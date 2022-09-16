@@ -27,6 +27,7 @@ class _screenFormThree extends State<screenFormThree> {
           width:double.infinity,                      
           child:SimpleElevatedButton(
               color: globals.firstColor,
+              borderRadius: 10,
               child: Text("Submit",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
               onPressed: widget.submitForm as void Function()?,
           )

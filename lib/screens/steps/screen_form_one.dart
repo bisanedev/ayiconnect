@@ -30,6 +30,7 @@ class _screenFormOne extends State<screenFormOne> {
                 width: 200,                                   
                 child: SimpleElevatedButton(
                   color: globals.firstColor,
+                  borderRadius: 10,
                   child: Text("Find a Helper",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
                   onPressed: widget.selectHelper as void Function()?,
                 )
@@ -41,6 +42,7 @@ class _screenFormOne extends State<screenFormOne> {
                 width: 200,                      
                 child: SimpleElevatedButton(
                   color: globals.secondColor,
+                  borderRadius: 10,
                   child: Text("Find for a Job",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
                   onPressed: widget.selectJob as void Function()?,
                 )

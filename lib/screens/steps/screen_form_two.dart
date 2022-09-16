@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
 import '../../components/form/button.dart';
+import '../../components/form/Input_text.dart';
 
 class screenFormTwo extends StatefulWidget {  
   final Function? nextForm;
@@ -21,12 +22,13 @@ class _screenFormTwo extends State<screenFormTwo> {
   Widget build(BuildContext context) {   
     return Column(
       children:<Widget>[
-        TextFormField(decoration: InputDecoration(labelText: 'Home Address')),
+        InputText(hintText: "Your full name"),   
         SizedBox(height: 20),
         SizedBox(
             width:double.infinity,                      
             child:SimpleElevatedButton(
                   color: globals.firstColor,
+                  borderRadius: 10,
                   child: Text("Next",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
                   onPressed: widget.nextForm as void Function()?,
             )
