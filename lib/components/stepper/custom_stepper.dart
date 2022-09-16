@@ -577,7 +577,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     return Column(
       children: <Widget>[
         Container(
-          height: 80,
+          height: 90,
           color: globals.firstColor,
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 25.0),

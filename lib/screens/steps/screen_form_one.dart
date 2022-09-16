@@ -22,7 +22,7 @@ class _ScreenFormOne extends State<ScreenFormOne> {
   Widget build(BuildContext context) {   
     return Column(
       children: <Widget>[
-          const SizedBox(height:30),
+          const SizedBox(height:20),
           Center(
             child:Container(
               height: 300,
@@ -60,7 +60,7 @@ class _ScreenFormOne extends State<ScreenFormOne> {
                 children: <Widget>[
                   Image(height: 150,width: 150,image: AssetImage('../../assets/images/job.png')),
                   const SizedBox(height:15),
-                  Text("Are you seeking care for your\n love one?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize: 17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
+                  Text("Or you're looking for a care,\n housekeeper, or tutor job?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize: 17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
                   const SizedBox(height:10),
                   SimpleElevatedButton(
                     width: 200,
