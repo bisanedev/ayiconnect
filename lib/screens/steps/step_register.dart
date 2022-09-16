@@ -6,42 +6,43 @@ import './screen_form_one.dart';
 import './screen_form_two.dart';
 import './screen_form_three.dart';
 
+enum Gender { male, female, others }
+
 class StepRegisterScreen extends StatefulWidget {  
   const StepRegisterScreen({Key? key}) : super(key: key);
 
   @override
-  _StepRegisterScreen createState() => _StepRegisterScreen();
+  State<StepRegisterScreen> createState() => _StepRegisterScreen();
 }
 
 class _StepRegisterScreen extends State<StepRegisterScreen> {
   int _currentStep = 0;  
   VoidCallback? _onStepContinue;
-  VoidCallback? _onStepCancel;
+  //VoidCallback? _onStepCancel;
 
   @override
   Widget build(BuildContext context) {    
 
     return Scaffold(
-        appBar: HeaderStepper(),
-        body: Container(
-          child: Column(
+        appBar: const HeaderStepper(),
+        body: Column(
             children: [
               Expanded(
                 child: StepperCustom(                  
-                  physics: ScrollPhysics(),
+                  physics: const ScrollPhysics(),
                   currentStep: _currentStep,
                   onStepTapped: (step) => tapped(step),
                   onStepContinue: continued,
                   onStepCancel: null,
                   controlsBuilder: (BuildContext ctx, ControlsDetailsX dtl){
                     _onStepContinue = dtl.onStepContinue;
-                    _onStepCancel = dtl.onStepCancel;
-                    return SizedBox.shrink();                    
+                    //_onStepCancel = dtl.onStepCancel;
+                    return const SizedBox.shrink();                    
                   },
                   steps: <StepX>[
                     StepX(
-                      title: Text('Select\n Your Role',style: TextStyle(fontSize: 8,color: _currentStep >= 0 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
-                      content:  screenFormOne(
+                      title: Text('Select\n Your Role',style: TextStyle(fontSize: 8,color: _currentStep >= 0 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
+                      content:  ScreenFormOne(
                           selectHelper:() {
                             _onStepContinue!();
                           },
@@ -53,8 +54,8 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                       state: _currentStep >= 1 ? StepStateX.complete : StepStateX.disabled,
                     ),
                     StepX(
-                      title: Text('Personal Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 1 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),
-                      content: screenFormTwo(
+                      title: Text('Personal Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 1 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),
+                      content: ScreenFormTwo(
                         nextForm:() {
                           _onStepContinue!();
                         }
@@ -63,8 +64,8 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                       state: _currentStep >= 2 ? StepStateX.complete : StepStateX.disabled,
                     ),
                     StepX(
-                      title: Text('Professional Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 2 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),
-                      content: screenFormThree(
+                      title: Text('Professional Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 2 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),
+                      content: ScreenFormThree(
                         submitForm:(){
                           submitForm();
                         },
@@ -76,8 +77,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                 ),
               ),
             ],
-          ),
-        )
+          ),  
     );
   }
 

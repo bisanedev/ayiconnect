@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
 import '../../components/form/button.dart';
 
-class screenFormThree extends StatefulWidget { 
+class ScreenFormThree extends StatefulWidget { 
   final Function? submitForm; 
-  const screenFormThree({Key? key,this.submitForm}) : super(key: key);
+  const ScreenFormThree({Key? key,this.submitForm}) : super(key: key);
 
   @override
-  _screenFormThree createState() => _screenFormThree();
+  State<ScreenFormThree> createState() => _ScreenFormThree();
 }
 
-class _screenFormThree extends State<screenFormThree> {
+class _ScreenFormThree extends State<ScreenFormThree> {
 
   @override
   void initState() {        
@@ -21,15 +21,15 @@ class _screenFormThree extends State<screenFormThree> {
   Widget build(BuildContext context) {   
     return Column(
       children:<Widget>[
-        TextFormField(decoration: InputDecoration(labelText: 'Mobile Number')), 
-        SizedBox(height: 20),     
+        TextFormField(decoration:const InputDecoration(labelText: 'Mobile Number')), 
+        const SizedBox(height: 20),     
         SizedBox(
           width:double.infinity,                      
           child:SimpleElevatedButton(
               color: globals.firstColor,
-              borderRadius: 10,
-              child: Text("Submit",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
+              borderRadius: 10,              
               onPressed: widget.submitForm as void Function()?,
+              child: const Text("Submit",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
           )
         ) 
       ]

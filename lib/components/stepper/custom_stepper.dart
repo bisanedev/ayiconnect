@@ -5,11 +5,6 @@
 import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
 
-// TODO(dragostis): Missing functionality:
-//   * mobile horizontal mode with adding/removing steps
-//   * alternative labeling
-//   * stepper feedback in the case of high-latency interactions
-
 /// The state of a [Step] which is used to control the style of the circle and
 /// text.
 ///
@@ -127,9 +122,17 @@ class StepX {
     this.state = StepStateX.indexed,
     this.isActive = false,
     this.label,
-  }) : assert(title != null),
-       assert(content != null),
-       assert(state != null);
+  });
+  // const StepX({
+  //   required this.title,
+  //   this.subtitle,
+  //   required this.content,
+  //   this.state = StepStateX.indexed,
+  //   this.isActive = false,
+  //   this.label,
+  // }) : assert(title != null),
+  //      assert(content != null),
+  //      assert(state != null);
 
   /// The title of the step that typically describes it.
   final Widget title;
@@ -196,10 +199,21 @@ class StepperCustom extends StatefulWidget {
     this.controlsBuilder,
     this.elevation,
     this.margin,
-  }) : assert(steps != null),       
-       assert(currentStep != null),
-       assert(0 <= currentStep && currentStep < steps.length);
-
+  });
+  // const StepperCustom({
+  //   super.key,
+  //   required this.steps,
+  //   this.physics,
+  //   this.currentStep = 0,
+  //   this.onStepTapped,
+  //   this.onStepContinue,
+  //   this.onStepCancel,
+  //   this.controlsBuilder,
+  //   this.elevation,
+  //   this.margin,
+  // }) : assert(steps != null),       
+  //      assert(currentStep != null),
+  //      assert(0 <= currentStep && currentStep < steps.length);
   /// The steps of the stepper whose titles, subtitles, icons always get shown.
   ///
   /// The length of [steps] must not change.
@@ -249,16 +263,13 @@ class StepperCustom extends StatefulWidget {
 }
 
 class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
-  late List<GlobalKey> _keys;
+
   final Map<int, StepStateX> _oldStates = <int, StepStateX>{};
 
   @override
   void initState() {
     super.initState();
-    _keys = List<GlobalKey>.generate(
-      widget.steps.length,
-      (int i) => GlobalKey(),
-    );
+
 
     for (int i = 0; i < widget.steps.length; i += 1) {
       _oldStates[i] = widget.steps[i].state;
@@ -275,43 +286,18 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     }
   }
 
-  bool _isFirst(int index) {
-    return index == 0;
-  }
-
   bool _isLast(int index) {
     return widget.steps.length - 1 == index;
-  }
-
-  bool _isCurrent(int index) {
-    return widget.currentStep == index;
   }
 
   bool _isDark() {
     return Theme.of(context).brightness == Brightness.dark;
   }
 
-  bool _isLabel() {
-    for (final StepX step in widget.steps) {
-      if (step.label != null) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  Widget _buildLine(bool visible) {
-    return Container(
-      width: visible ? 1.0 : 0.0,
-      height: 16.0,
-      color: Colors.grey.shade400,
-    );
-  }
-
   Widget _buildCircleChild(int index, bool oldState) {
     final StepStateX state = oldState ? _oldStates[index]! : widget.steps[index].state;
     final bool isDarkActive = _isDark() && widget.steps[index].isActive;
-    assert(state != null);
+    //assert(state != null);
     switch (state) {
       case StepStateX.indexed:
       case StepStateX.disabled:
@@ -336,15 +322,6 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     }
   }
 
-  Color _circleColor(int index) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    if (!_isDark()) {
-      return widget.steps[index].isActive ? colorScheme.primary : colorScheme.onSurface.withOpacity(0.38);
-    } else {
-      return widget.steps[index].isActive ? colorScheme.secondary : colorScheme.background;
-    }
-  }
-
   Widget _buildCircle(int index, bool oldState,int current) {
     
     return Container(
@@ -355,7 +332,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
         curve: Curves.fastOutSlowIn,
         duration: kThemeAnimationDuration,
         decoration: BoxDecoration(
-          color: current >= index ? Colors.white:current == index ?Colors.white:Color(0xffe5e5ea),
+          color: current >= index ? Colors.white:current == index ?Colors.white:const Color(0xffe5e5ea),
           shape: BoxShape.circle,
         ),
         child: Center(
@@ -483,7 +460,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
 
-    assert(widget.steps[index].state != null);
+    //assert(widget.steps[index].state != null);
     switch (widget.steps[index].state) {
       case StepStateX.indexed:
       case StepStateX.editing:
@@ -504,7 +481,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     final ThemeData themeData = Theme.of(context);
     final TextTheme textTheme = themeData.textTheme;
 
-    assert(widget.steps[index].state != null);
+    //assert(widget.steps[index].state != null);
     switch (widget.steps[index].state) {
       case StepStateX.indexed:
       case StepStateX.editing:
@@ -516,27 +493,6 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
         );
       case StepStateX.error:
         return textTheme.bodySmall!.copyWith(
-          color: _isDark() ? _kErrorDark : _kErrorLight,
-        );
-    }
-  }
-
-  TextStyle _labelStyle(int index) {
-    final ThemeData themeData = Theme.of(context);
-    final TextTheme textTheme = themeData.textTheme;
-
-    assert(widget.steps[index].state != null);
-    switch (widget.steps[index].state) {
-      case StepStateX.indexed:
-      case StepStateX.editing:
-      case StepStateX.complete:
-        return textTheme.bodyLarge!;
-      case StepStateX.disabled:
-        return textTheme.bodyLarge!.copyWith(
-          color: _isDark() ? _kDisabledDark : _kDisabledLight,
-        );
-      case StepStateX.error:
-        return textTheme.bodyLarge!.copyWith(
           color: _isDark() ? _kErrorDark : _kErrorLight,
         );
     }
@@ -565,17 +521,6 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
           ),
       ],
     );
-  }
-
-  Widget _buildLabelText(int index) {
-    if (widget.steps[index].label != null) {
-      return AnimatedDefaultTextStyle(
-        style: _labelStyle(index),
-        duration: kThemeAnimationDuration,
-        child: widget.steps[index].label!,
-      );
-    }
-    return const SizedBox.shrink();
   }
 
   Widget _buildHorizontal(int isCurrent) {
@@ -610,7 +555,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
                     height: 1.0,
                     color: Colors.white,
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                 ],
               ),
             )

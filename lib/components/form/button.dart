@@ -6,7 +6,7 @@ class SimpleElevatedButton extends StatelessWidget {
       this.color,
       this.onPressed,
       this.borderRadius = 6,
-      this.padding = const EdgeInsets.symmetric(horizontal: 28, vertical: 20),
+      this.padding = const EdgeInsets.symmetric(horizontal: 28, vertical: 24),
       Key? key})
       : super(key: key);
   final Color? color;
@@ -18,8 +18,7 @@ class SimpleElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData currentTheme = Theme.of(context);
-    return ElevatedButton(
-      child: child,
+    return ElevatedButton(      
       style: ElevatedButton.styleFrom(
         padding: padding,
         backgroundColor: color ?? currentTheme.primaryColor,
@@ -28,6 +27,7 @@ class SimpleElevatedButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed as void Function()?,
+      child: child,
     );
   }
 }
@@ -60,7 +60,7 @@ class SimpleOutlinedButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
         ),
-        primary: textColor ?? outlineColor ?? currentTheme.primaryColor,
+        backgroundColor: textColor ?? outlineColor ?? currentTheme.primaryColor,
       ),
       onPressed: onPressed as void Function()?,
       child: child!,
@@ -89,7 +89,7 @@ class SimpleElevatedButtonWithIcon extends StatelessWidget {
       onPressed: onPressed as void Function()?,
       icon: Icon(iconData),
       label: label,
-      style: ElevatedButton.styleFrom(primary: color, padding: padding),
+      style: ElevatedButton.styleFrom(backgroundColor: color, padding: padding),
     );
   }
 }

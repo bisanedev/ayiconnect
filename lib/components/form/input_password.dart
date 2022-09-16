@@ -9,7 +9,7 @@ class InputPassword extends StatefulWidget {
 
   const InputPassword({this.label,this.placeholder,this.errorMessage,this.controller,Key? key}): super(key: key);
   @override
-  _InputPassword createState() => _InputPassword();
+  State<InputPassword> createState() => _InputPassword();
 }
 
 class _InputPassword extends State<InputPassword> {  
