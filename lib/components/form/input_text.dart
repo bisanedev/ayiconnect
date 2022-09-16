@@ -18,6 +18,7 @@ class InputText extends StatelessWidget {
       autofocus: false,      
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(fontSize: 14.0, color: Color.fromRGBO(0, 0, 0, 0.425)),
         errorText: error !=null ? errorMessage:null,     
         fillColor: Colors.white,
         filled: true,        

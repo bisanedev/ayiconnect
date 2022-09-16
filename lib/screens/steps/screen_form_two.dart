@@ -21,7 +21,10 @@ class _screenFormTwo extends State<screenFormTwo> {
   @override
   Widget build(BuildContext context) {   
     return Column(
-      children:<Widget>[
+      crossAxisAlignment: CrossAxisAlignment.start,   
+      children:<Widget>[        
+        Text('Full Name',style:TextStyle(fontSize: 16,color: globals.fontColor,fontWeight: FontWeight.bold)),
+        SizedBox(height: 5),
         InputText(hintText: "Your full name"),   
         SizedBox(height: 20),
         SizedBox(
