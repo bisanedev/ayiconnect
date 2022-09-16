@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
 import '../../components/stepper/custom_stepper.dart';
 import '../../components/widget/header_stepper.dart';
-import '../../components/form/button.dart';
 import './screen_form_one.dart';
 import './screen_form_two.dart';
 import './screen_form_three.dart';
@@ -49,19 +48,27 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                           selectJob:() {
                             _onStepContinue!();                          
                           }
-                      ),                    
+                      ),
                       isActive: _currentStep >= 0,
                       state: _currentStep >= 1 ? StepStateX.complete : StepStateX.disabled,
                     ),
                     StepX(
                       title: Text('Personal Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 1 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),
-                      content: screenFormTwo(),
+                      content: screenFormTwo(
+                        nextForm:() {
+                          _onStepContinue!();
+                        }
+                      ),
                       isActive: _currentStep >= 0,
                       state: _currentStep >= 2 ? StepStateX.complete : StepStateX.disabled,
                     ),
                     StepX(
                       title: Text('Professional Information',style: TextStyle(fontSize: 8,color:  _currentStep >= 2 ? Colors.white:Color(0xffe5e5ea)),textAlign: TextAlign.center),
-                      content: screenFormThree(),
+                      content: screenFormThree(
+                        submitForm:(){
+                          submitForm();
+                        },
+                      ),
                       isActive:_currentStep >= 0,
                       state: _currentStep >= 3 ? StepStateX.complete : StepStateX.disabled,
                     ),
@@ -74,7 +81,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
     );
   }
 
-  submit(){
+  submitForm(){
     print("Sending...");
   }
 
