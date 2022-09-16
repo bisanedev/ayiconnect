@@ -13,8 +13,6 @@ class ScreenFormOne extends StatefulWidget {
 
 class _ScreenFormOne extends State<ScreenFormOne> {
 
-
-
   @override
   void initState() {        
     super.initState();      
@@ -24,28 +22,56 @@ class _ScreenFormOne extends State<ScreenFormOne> {
   Widget build(BuildContext context) {   
     return Column(
       children: <Widget>[
-          const SizedBox(height:200),
+          const SizedBox(height:30),
           Center(
-            child:SizedBox(
-                width: 200,                                   
-                child: SimpleElevatedButton(
-                  color: globals.firstColor,
-                  borderRadius: 10,                  
-                  onPressed: widget.selectHelper as void Function()?,
-                  child: const Text("Find a Helper",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
-                )
+            child:Container(
+              height: 300,
+              width: 400,
+              padding: const EdgeInsets.all(8.0),       
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Image(height: 150,width: 150,image: AssetImage('../../assets/images/helper.png')),
+                  const SizedBox(height:15),
+                  Text("Are you seeking care for your\n love one?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize: 17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
+                  const SizedBox(height:10),
+                  SimpleElevatedButton(
+                    width: 200,
+                    color: globals.firstColor,
+                    elevation: 0,
+                    borderRadius: 10,                  
+                    onPressed: widget.selectHelper as void Function()?,
+                    child: const Text("Find a Helper",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
+                  )
+                ]
+              ),
             )
           ),
-          const SizedBox(height:200),
+          const SizedBox(height:30),
           Center(
-            child:SizedBox(
-                width: 200,                      
-                child: SimpleElevatedButton(
-                  color: globals.secondColor,
-                  borderRadius: 10,                  
-                  onPressed: widget.selectJob as void Function()?,
-                  child: const Text("Find for a Job",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
-                )
+            child:Container(
+              height: 300,
+              width: 400,
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Image(height: 150,width: 150,image: AssetImage('../../assets/images/job.png')),
+                  const SizedBox(height:15),
+                  Text("Are you seeking care for your\n love one?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize: 17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
+                  const SizedBox(height:10),
+                  SimpleElevatedButton(
+                    width: 200,
+                    color: globals.secondColor,
+                    elevation: 0,
+                    borderRadius: 10,                  
+                    onPressed: widget.selectJob as void Function()?,
+                    child: const Text("Find for a Job",style:TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.normal)),
+                  )
+                ]
+              ),
             )
           )
       ],
