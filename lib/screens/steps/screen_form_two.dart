@@ -22,6 +22,7 @@ class _screenFormTwo extends State<screenFormTwo> {
     return Column(
       children:<Widget>[
         TextFormField(decoration: InputDecoration(labelText: 'Home Address')),
+        SizedBox(height: 20),
         SizedBox(
             width:double.infinity,                      
             child:SimpleElevatedButton(
