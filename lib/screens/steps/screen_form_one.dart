@@ -3,10 +3,9 @@ import '../../globals.dart' as globals;
 import '../../components/form/button.dart';
 
 class ScreenFormOne extends StatelessWidget { 
-  final Function? selectHelper;
-  final Function? selectJob; 
+  final Function(int)? onPressed;
   final int? roleSelected;
-  const ScreenFormOne({Key? key,this.selectHelper,this.selectJob,this.roleSelected}) : super(key: key);
+  const ScreenFormOne({Key? key,this.roleSelected,this.onPressed}) : super(key: key);
 
     @override
   Widget build(BuildContext context) {   
@@ -31,7 +30,9 @@ class ScreenFormOne extends StatelessWidget {
                     color: globals.firstColor,
                     elevation: 0,
                     borderRadius: 10,                  
-                    onPressed: selectHelper as void Function()?,
+                    onPressed: () {
+                        onPressed!(0);
+                    },
                     child: roleSelected == 0 ? 
                     Row(
                       children: [
@@ -65,7 +66,9 @@ class ScreenFormOne extends StatelessWidget {
                     color: globals.secondColor,
                     elevation: 0,
                     borderRadius: 10,                  
-                    onPressed: selectJob as void Function()?,
+                    onPressed: () {
+                      onPressed!(1);
+                    },
                     child: roleSelected == 1 ? 
                     Row(
                       children:[

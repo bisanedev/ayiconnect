@@ -10,12 +10,16 @@ enum Gender { male, female, others }
 class ScreenFormTwo extends StatelessWidget {  
   final Function? nextForm;
   final TextEditingController? fullNameController;
+  final int? genderValue;
+  final Function(int) genderRadio;  
   final String? calendarValue;
   final Function? calendarOnPressed;  
 
   const ScreenFormTwo({Key? key,
     this.nextForm,
     this.fullNameController,
+    this.genderValue,
+    required this.genderRadio,
     this.calendarValue,
     this.calendarOnPressed
   }) : super(key: key);
@@ -34,7 +38,12 @@ class ScreenFormTwo extends StatelessWidget {
         const SizedBox(height: 15),
         Text('Select Your Gender',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),   
-        const InputGender(),
+        InputGender(
+          gender:genderValue,
+          onPressed:(int val) {
+            genderRadio(val);
+          }                   
+        ),
         const SizedBox(height: 15),
         Text('Choose Your Date of Birth',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),

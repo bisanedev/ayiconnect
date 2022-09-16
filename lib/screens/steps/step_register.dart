@@ -62,14 +62,10 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                       title: Text('Select\n Your Role',style: TextStyle(fontSize: 8,color: _currentStep >= 0 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
                       content:  ScreenFormOne(
                           roleSelected: role,
-                          selectHelper:() {
-                            setState(() { role=0; } );
-                            _onStepContinue!();
-                          },
-                          selectJob:() {
-                            setState(() {role=1; });
-                            _onStepContinue!();                          
-                          }
+                          onPressed:(int value) {
+                              setState(() { role=value; } );
+                              _onStepContinue!();
+                          }                     
                       ),
                       isActive: _currentStep >= 0,
                       state: _currentStep >= 1 ? StepStateX.complete : StepStateX.disabled,
@@ -80,6 +76,12 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                         fullNameController:fullName,                        
                         nextForm:() {
                           _onStepContinue!();
+                        },
+                        genderValue:gender,
+                        genderRadio: (int value) {
+                          setState(() {
+                            gender = value;
+                          });
                         },
                         calendarValue:dateBirth,
                         calendarOnPressed:(){
@@ -123,6 +125,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
   submitForm(){
     print("Sending...");
     print(fullName.text);
+    print(gender == 0 ? "Male" : gender == 1 ? "Female":"Others"); 
     print(dateBirth);
   }
 
