@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:intl/intl.dart';
+import 'dart:async';
 import '../../globals.dart' as globals;
 import '../../components/stepper/custom_stepper.dart';
 import '../../components/widget/header_stepper.dart';
 import './screen_form_one.dart';
 import './screen_form_two.dart';
 import './screen_form_three.dart';
-
-enum Gender { male, female, others }
 
 class StepRegisterScreen extends StatefulWidget {  
   const StepRegisterScreen({Key? key}) : super(key: key);
@@ -24,6 +25,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
   DateFormat calendarFormat = DateFormat("dd/MM/yyyy");
   DateTime? currentDateBirth;
   //VoidCallback? _onStepCancel;
+  final GeolocatorPlatform _geolocatorPlatform = GeolocatorPlatform.instance;
   /*--- register form variable ---*/
   int? role;
   TextEditingController fullName = TextEditingController();
@@ -37,6 +39,11 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
   int? service;
   String? aboutYou;
   /*--- EOF register form variable ---*/
+  @override  
+  void initState() {        
+    super.initState();
+    _getCurrentPosition();
+  }  
 
   @override
   Widget build(BuildContext context) {    
@@ -104,6 +111,10 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                           setState(() {
                             phoneNumber = value;
                           });
+                        },
+                        addressValue:currentLoc,
+                        getLocation:(){                          
+                          _getCurrentPosition();
                         }
                       ),
                       isActive: _currentStep >= 0,
@@ -129,10 +140,12 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
 
   submitForm(){
     print("Sending...");
+    print(role == 0 ? "FindJob":"FindHelper");
     print(fullName.text);
     print(gender == 0 ? "Male" : gender == 1 ? "Female":"Others"); 
     print(dateBirth);
     print(phoneNumber);
+    print(currentLoc);
   }
 
   tapped(int step){
@@ -147,4 +160,53 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
     _currentStep > 0 ?
         setState(() => _currentStep -= 1) : null;
   }
+  /*--- Geolocation ---*/ 
+  Future<void> _getCurrentPosition() async {    
+    final hasPermission = await _handlePermission();
+
+    if (!hasPermission) {
+      return;
+    }
+
+    final position = await _geolocatorPlatform.getCurrentPosition(); 
+    GetAddressFromLatLong(position);
+  }
+
+  Future<void> GetAddressFromLatLong(Position position) async {
+    List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+    //print(placemarks);
+    Placemark place = placemarks[0];
+    // String Address = '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
+    // print(Address);  
+    String Address = place.locality! +", "+ place.country!;  
+    setState(() {
+      currentLoc = Address;
+    });
+  }
+
+  Future<bool> _handlePermission() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await _geolocatorPlatform.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return false;
+    }
+
+    permission = await _geolocatorPlatform.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await _geolocatorPlatform.requestPermission();
+      if (permission == LocationPermission.denied) {
+
+        return false;
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      return false;
+    }
+    return true;
+  }
+  /*--- EOF ---*/
 }

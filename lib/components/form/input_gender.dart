@@ -35,14 +35,14 @@ class InputGender extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center, 
             children: [              
-              gender == 0 ? Icon(Icons.radio_button_checked,color: Colors.white,size:  24.0):Icon(Icons.radio_button_off,color: globals.formColorBorder,size:  24.0),
-              SizedBox(width:  10),
+              gender == 0 ? const Icon(Icons.radio_button_checked,color: Colors.white,size:  24.0):Icon(Icons.radio_button_off,color: globals.formColorBorder,size:  24.0),
+              const SizedBox(width:  10),
               gender == 0 ? Text('Male',style:TextStyle(fontSize:  globals.fontSizeOther, color: Colors.white)):Text('Male',style:TextStyle(fontSize:  globals.fontSizeOther, color: const Color.fromRGBO(0, 0, 0, 0.425))),
             ],            
           )
         )        
         ),
-        SizedBox(width:  17),
+        const SizedBox(width:  17),
         InkWell(
         onTap:() {
             onPressed!(1);
@@ -60,8 +60,8 @@ class InputGender extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center, 
             children: [              
-              gender == 1 ? Icon(Icons.radio_button_checked,color: Colors.white,size:  24.0):Icon(Icons.radio_button_off,color: globals.formColorBorder,size:  24.0),
-              SizedBox(width:  10),
+              gender == 1 ? const Icon(Icons.radio_button_checked,color: Colors.white,size:  24.0):Icon(Icons.radio_button_off,color: globals.formColorBorder,size:  24.0),
+              const SizedBox(width:  10),
               gender == 1 ? Text('Female',style:TextStyle(fontSize:  globals.fontSizeOther, color: Colors.white)):Text('Female',style:TextStyle(fontSize:  globals.fontSizeOther, color: const Color.fromRGBO(0, 0, 0, 0.425))),
             ],            
           )
@@ -85,8 +85,8 @@ class InputGender extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center, 
             children: [              
-              gender == 2 ? Icon(Icons.radio_button_checked,color: Colors.white,size:  24.0):Icon(Icons.radio_button_off,color: globals.formColorBorder,size:  24.0),
-              SizedBox(width:  10),
+              gender == 2 ? const Icon(Icons.radio_button_checked,color: Colors.white,size:  24.0):Icon(Icons.radio_button_off,color: globals.formColorBorder,size:  24.0),
+              const SizedBox(width:  10),
               gender == 2 ? Text('Others',style:TextStyle(fontSize:  globals.fontSizeOther, color: Colors.white)):Text('Others',style:TextStyle(fontSize:  globals.fontSizeOther, color: const Color.fromRGBO(0, 0, 0, 0.425))),
             ],            
           )      

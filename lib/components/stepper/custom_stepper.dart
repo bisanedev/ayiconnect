@@ -537,8 +537,8 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
               child: Center(child: _buildIcon(i,isCurrent)),
             ),
             Container(
-              margin: EdgeInsetsDirectional.only(bottom:  10.0),
-              child: SizedBox(width: 62,child: _buildHeaderText(i),)
+              margin: const EdgeInsetsDirectional.only(bottom:  10.0),
+              child: SizedBox(width: 68,child: _buildHeaderText(i),)
             )
             ],
           )
@@ -553,11 +553,11 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal:  6.0),
+                    margin: const EdgeInsets.symmetric(horizontal:  6.0),
                     height: 1.0,
                     color: Colors.white,
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 35),
                 ],
               ),
             )
@@ -582,7 +582,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
           height:  110,
           color: globals.firstColor,
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal:  45.0),
+            margin: const EdgeInsets.symmetric(horizontal:  45.0),
             child: Row(
               children: children,
             ),
@@ -591,7 +591,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
         Expanded(
           child: ListView(
             physics: widget.physics,
-            padding: EdgeInsets.all( 24.0),
+            padding: const EdgeInsets.all( 24.0),
             children: <Widget>[
               AnimatedSize(
                 curve: Curves.fastOutSlowIn,

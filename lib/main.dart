@@ -43,7 +43,7 @@ class _MyAppState  extends State<MyApp> {
           routeInformationParser: router.defaultRouteParser(includePrefixMatches: true),
           theme: ThemeData(
             primarySwatch: Colors.cyan,
-            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 3.sp),
           )          
         );
       }      

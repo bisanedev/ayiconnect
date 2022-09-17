@@ -16,8 +16,10 @@ class ScreenFormTwo extends StatelessWidget {
   final Function(int) genderRadio;  
   final String? calendarValue;
   final Function? calendarOnPressed;
-  final String? phoneValue;
-  final Function(String) phoneOnChange;   
+  final String? phoneValue;  
+  final Function(String) phoneOnChange;
+  final String? addressValue;
+  final Function? getLocation;   
 
   const ScreenFormTwo({Key? key,
     this.nextForm,
@@ -27,8 +29,10 @@ class ScreenFormTwo extends StatelessWidget {
     required this.genderRadio,
     this.calendarValue,
     this.calendarOnPressed,
-    this.phoneValue,
-    required this.phoneOnChange
+    this.phoneValue,    
+    required this.phoneOnChange,
+    this.addressValue,
+    this.getLocation,
   }) : super(key: key);
 
   @override
@@ -52,7 +56,7 @@ class ScreenFormTwo extends StatelessWidget {
               const InputLikeText(                    
                   iconData: Icons.add_a_photo,                  
                   value: "Add profile photo",
-                  padding: const EdgeInsets.all(12.0),                 
+                  padding: EdgeInsets.all(12.0),                 
               ),
               const SizedBox(height: 5),
               Text('Add a profile to make it more personal,\nIt makes a difference!',textAlign: TextAlign.start,style:TextStyle(fontSize: 13 ,color: globals.fontColor,fontWeight: FontWeight.normal)),
@@ -127,10 +131,11 @@ class ScreenFormTwo extends StatelessWidget {
         const SizedBox(height: 15),
         Text('Current Location',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
-        InputText(
-          hintText: "Auto Location Only, No Select Pop-up And No Api Location",
-          controller: locationController,
-          readOnly: true,
+        InputLikeText(         
+          iconData: Icons.gps_fixed,
+          hintText: "Where Your Are",
+          value: addressValue,                
+          onPressed: getLocation as void Function()?
         ),
         const SizedBox(height: 25),
         SizedBox(

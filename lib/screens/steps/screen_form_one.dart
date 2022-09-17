@@ -24,10 +24,10 @@ class ScreenFormOne extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Image(height:  150 ,width:  150,image: const AssetImage('assets/images/helper.png'), fit: BoxFit.fitWidth),
-                  SizedBox(height: 15),
+                  const Image(height:  150 ,width:  150,image: AssetImage('assets/images/helper.png'), fit: BoxFit.fitWidth),
+                  const SizedBox(height: 15),
                   Text("Are you seeking care for your\nlove one?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize:  17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   SimpleElevatedButton(
                     width:  200,
                     color: globals.firstColor,
@@ -41,7 +41,7 @@ class ScreenFormOne extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.done,color:Colors.white,size: globals.fontSize),
-                        SizedBox(width:  8),
+                        const SizedBox(width:  8),
                         Text("Find a Helper",style:TextStyle(fontSize:  globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal))
                       ]
                     )
@@ -51,7 +51,7 @@ class ScreenFormOne extends StatelessWidget {
               ),
             )
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Center(
             child:Container(
               height: screenHeight * 0.4,
@@ -61,10 +61,10 @@ class ScreenFormOne extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Image(height:  150,width:  150,image: const AssetImage('assets/images/job.png'),fit: BoxFit.fitWidth),
-                  SizedBox(height: 15),
+                  const Image(height:  150,width:  150,image: AssetImage('assets/images/job.png'),fit: BoxFit.fitWidth),
+                  const SizedBox(height: 15),
                   Text("Or you're looking for a care,\n housekeeper, or tutor job?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize:  17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   SimpleElevatedButton(
                     width:  200,
                     color: globals.secondColor,
@@ -78,7 +78,7 @@ class ScreenFormOne extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children:[
                         Icon(Icons.done,color:Colors.white,size: globals.fontSize),
-                        SizedBox(width:  8),
+                        const SizedBox(width: 8),
                         Text("Find for a Job",style:TextStyle(fontSize:  globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal))
                       ]
                     )
