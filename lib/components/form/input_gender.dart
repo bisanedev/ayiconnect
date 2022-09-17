@@ -13,7 +13,7 @@ class InputGender extends StatelessWidget {
   @override
   Widget build(BuildContext context) {    
     return SizedBox(      
-      height: 53.0,
+      height: 55.0,
       child: ListView(
       scrollDirection: Axis.horizontal,      
       children: [
@@ -24,7 +24,7 @@ class InputGender extends StatelessWidget {
         child: Container(
           height: 55,
           alignment: Alignment.center,
-          width: 110,
+          width: 120,
           decoration: BoxDecoration(
             color: gender == 0 ? globals.secondColor:Colors.white,
             borderRadius: BorderRadius.circular(8),
@@ -46,7 +46,7 @@ class InputGender extends StatelessWidget {
         child: Container(
           height: 55,
           alignment: Alignment.center,
-          width: 110,
+          width: 120,
           decoration: BoxDecoration(
             color: gender == 1 ? globals.secondColor:Colors.white,
             borderRadius: BorderRadius.circular(8),
@@ -68,7 +68,7 @@ class InputGender extends StatelessWidget {
         child: Container(
           height: 55,
           alignment: Alignment.center,
-          width: 110,
+          width: 120,
           decoration: BoxDecoration(
             color: gender == 2 ? globals.secondColor:Colors.white,
             borderRadius: BorderRadius.circular(8),
