@@ -11,6 +11,7 @@ enum Gender { male, female, others }
 class ScreenFormTwo extends StatelessWidget {  
   final Function? nextForm;
   final TextEditingController? fullNameController;
+  final TextEditingController? locationController;
   final int? genderValue;
   final Function(int) genderRadio;  
   final String? calendarValue;
@@ -21,6 +22,7 @@ class ScreenFormTwo extends StatelessWidget {
   const ScreenFormTwo({Key? key,
     this.nextForm,
     this.fullNameController,
+    this.locationController,
     this.genderValue,
     required this.genderRadio,
     this.calendarValue,
@@ -90,7 +92,11 @@ class ScreenFormTwo extends StatelessWidget {
         const SizedBox(height: 15),
         Text('Current Location',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
-        
+        InputText(
+          hintText: "Auto Location Only, No Select Pop-up And No Api Location",
+          controller: locationController,
+          readOnly: true,
+        ),
         const SizedBox(height: 15),
         SizedBox(
             width:double.infinity,                      
