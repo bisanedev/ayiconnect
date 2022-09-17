@@ -10,8 +10,6 @@ The trouble form my app :
 - not yet complete , code from scratch , late cause does not have a code with the same design
 - menu current location , for manual input , the autocomplete input location , need google place api 
 
-###Complete pages
-> Pages 1:
+### Complete pages
 ![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/1.png?raw=true)
-> Pages 2:
 ![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/2.png?raw=true)
