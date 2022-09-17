@@ -9,3 +9,9 @@ The trouble form my app :
 - best screen resolution is 1280x720
 - not yet complete , code from scratch , late cause does not have a code with the same design
 - menu current location , for manual input , the autocomplete input location , need google place api 
+
+###Complete pages
+Pages 1:
+![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/1.png)
+Pages 2:
+![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/2.png)
