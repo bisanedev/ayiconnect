@@ -21,7 +21,7 @@ class ScreenFormOne extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const Image(height: 150,width: 150,image: AssetImage('../../assets/images/helper.png')),
+                  const Image(height: 150,width: 150,image: AssetImage('assets/images/helper.png')),
                   const SizedBox(height:15),
                   Text("Are you seeking care for your\nlove one?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize: 17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
                   const SizedBox(height:10),
@@ -57,7 +57,7 @@ class ScreenFormOne extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const Image(height: 150,width: 150,image: AssetImage('../../assets/images/job.png')),
+                  const Image(height: 150,width: 150,image: AssetImage('assets/images/job.png')),
                   const SizedBox(height:15),
                   Text("Or you're looking for a care,\n housekeeper, or tutor job?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize: 17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
                   const SizedBox(height:10),

@@ -40,7 +40,7 @@ class ScreenFormTwo extends StatelessWidget {
         const CircleAvatar(
           radius: 40,
           backgroundColor: Color(0xfffefefe),
-          backgroundImage: AssetImage('../../assets/images/profile.jpg'),
+          backgroundImage: AssetImage('assets/images/profile.jpg'),
         ),
         const SizedBox(width: 20),
         Expanded(
