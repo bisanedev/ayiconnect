@@ -32,10 +32,45 @@ class ScreenFormTwo extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {   
+  Widget build(BuildContext context) { 
+    final profileCard = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const CircleAvatar(
+          radius: 40,
+          backgroundColor: Color(0xfffefefe),
+          backgroundImage: AssetImage('../../assets/images/profile.jpg'),
+        ),
+        const SizedBox(width: 20),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //Text('',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.normal)),
+              const InputLikeText(                    
+                  iconData: Icons.add_a_photo,                  
+                  value: "Add profile photo",
+                  padding: const EdgeInsets.all(12.0),                 
+              ),
+              const SizedBox(height: 5),
+              Text('Add a profile to make it more personal,\nIt makes a difference!',textAlign: TextAlign.start,style:TextStyle(fontSize: 13 ,color: globals.formColorBorder,fontWeight: FontWeight.normal)),
+            ],
+          )
+        )       
+      ],
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,   
-      children:<Widget>[        
+      children:<Widget>[
+        profileCard, 
+        const SizedBox(height: 19),     
+        Container(height:1,width:double.infinity,color: globals.formColorBorder),
+        const SizedBox(height: 19),
+        Container(height:1,width:double.infinity,color: globals.formColorBorder),
+        const SizedBox(height: 15),       
         Text('Full Name',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         InputText(
@@ -97,7 +132,7 @@ class ScreenFormTwo extends StatelessWidget {
           controller: locationController,
           readOnly: true,
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 25),
         SizedBox(
             width:double.infinity,                      
             child:SimpleElevatedButton(

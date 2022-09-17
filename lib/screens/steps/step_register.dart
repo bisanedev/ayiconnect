@@ -59,7 +59,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                   },
                   steps: <StepX>[
                     StepX(
-                      title: Text('Select\n Your Role',style: TextStyle(fontSize: 8,color: _currentStep >= 0 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
+                      title: Text('Select\nYour Role',style: TextStyle(fontSize: 8,color: _currentStep >= 0 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
                       content:  ScreenFormOne(
                           roleSelected: role,
                           onPressed:(int value) {

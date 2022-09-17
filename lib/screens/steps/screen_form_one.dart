@@ -23,7 +23,7 @@ class ScreenFormOne extends StatelessWidget {
                 children: <Widget>[
                   const Image(height: 150,width: 150,image: AssetImage('../../assets/images/helper.png')),
                   const SizedBox(height:15),
-                  Text("Are you seeking care for your\n love one?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize: 17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
+                  Text("Are you seeking care for your\nlove one?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize: 17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
                   const SizedBox(height:10),
                   SimpleElevatedButton(
                     width: 200,
