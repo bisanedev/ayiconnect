@@ -11,7 +11,6 @@ enum Gender { male, female, others }
 class ScreenFormTwo extends StatelessWidget {  
   final Function? nextForm;
   final TextEditingController? fullNameController;
-  final TextEditingController? locationController;
   final int? genderValue;
   final Function(int) genderRadio;  
   final String? calendarValue;
@@ -23,8 +22,7 @@ class ScreenFormTwo extends StatelessWidget {
 
   const ScreenFormTwo({Key? key,
     this.nextForm,
-    this.fullNameController,
-    this.locationController,
+    this.fullNameController,    
     this.genderValue,
     required this.genderRadio,
     this.calendarValue,
@@ -103,7 +101,8 @@ class ScreenFormTwo extends StatelessWidget {
         Text('Phone Number',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         IntlPhoneField(
-            decoration: InputDecoration(  
+            decoration: InputDecoration( 
+                  contentPadding: const EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 20.0), 
                   fillColor: Colors.white,
                   filled: true,                              
                   enabledBorder: OutlineInputBorder(
@@ -144,7 +143,7 @@ class ScreenFormTwo extends StatelessWidget {
                 color: globals.firstColor,
                 borderRadius: 10,
                 onPressed: nextForm as void Function()?,
-                child: Text("Next",style:TextStyle(fontSize: globals.fontSize ,color: Colors.white,fontWeight: FontWeight.normal))                  
+                child: Text("Next",style:TextStyle(fontSize: 18 ,color: Colors.white,fontWeight: FontWeight.normal))                  
             )
         )             
       ]

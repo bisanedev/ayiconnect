@@ -7,7 +7,7 @@ class SimpleElevatedButton extends StatelessWidget {
       this.onPressed,
       this.borderRadius = 6,
       this.elevation = 0,
-      this.padding = const EdgeInsets.symmetric(horizontal: 28, vertical: 24),
+      this.padding = const EdgeInsets.symmetric(horizontal: 28, vertical: 22),
       this.width = double.infinity,
       Key? key})
       : super(key: key);      

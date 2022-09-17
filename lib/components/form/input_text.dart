@@ -2,27 +2,46 @@ import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
 
 class InputText extends StatelessWidget {
-  const InputText({Key? key,this.controller,this.hintText,this.error,this.errorMessage,this.width = double.infinity,this.readOnly = false,this.suffixIconData,this.onPressedSuffix}) : super(key: key);
+  const InputText({
+    Key? key,
+    this.controller,
+    this.hintText,
+    this.error,
+    this.errorMessage,
+    this.width = double.infinity,    
+    this.readOnly = false,
+    this.suffixIconData,
+    this.onPressedSuffix,
+    this.isMultiline = false,
+    this.maxLines = 1,
+    this.maxLength
+  }) : super(key: key);
 
   final TextEditingController? controller;      
   final String? hintText;  
   final bool? error;
   final String? errorMessage;  
-  final double width;
+  final double width;  
   final bool readOnly;
   final IconData? suffixIconData;
   final Function? onPressedSuffix;
+  final bool isMultiline;
+  final int? maxLines;
+  final int? maxLength;
 
   @override
   Widget build(BuildContext context) {        
     return SizedBox(    
-    width: width,
-    child:TextFormField(      
+    width: width,    
+    child:
+    TextFormField(      
       controller: controller,
       readOnly: readOnly,
-      keyboardType: TextInputType.text,
+      keyboardType: isMultiline? TextInputType.multiline:TextInputType.text,
       cursorColor: globals.firstColor,  
-      autofocus: false,        
+      autofocus: false,  
+      maxLength:maxLength,    
+      maxLines: maxLines,      
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(fontSize: globals.fontSizeOther, color: const Color.fromRGBO(0, 0, 0, 0.425)),

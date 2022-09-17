@@ -33,11 +33,11 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
   String? dateBirth;
   String? phoneNumber;
   String? currentLoc;
-  String? occupation;
-  String? company;
+  TextEditingController occupation = TextEditingController();
+  TextEditingController company = TextEditingController();    
   List<int>? spoken;
   int? service;
-  String? aboutYou;
+  TextEditingController aboutYou = TextEditingController();  
   /*--- EOF register form variable ---*/
   @override  
   void initState() {        
@@ -65,7 +65,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                   },
                   steps: <StepX>[
                     StepX(
-                      title: Text('Select\nYour Role',style: TextStyle(fontSize:  11,color: _currentStep >= 0 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
+                      title: Text('Select Your Role',style: TextStyle(fontSize:  11,color: _currentStep >= 0 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
                       content:  ScreenFormOne(
                           roleSelected: role,
                           onPressed:(int value) {
@@ -123,6 +123,9 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                     StepX(
                       title: Text('Professional Information',style: TextStyle(fontSize:  11,color:  _currentStep >= 2 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),
                       content: ScreenFormThree(
+                        occupationController:occupation,
+                        companyController:company,
+                        aboutYouController:aboutYou,
                         submitForm:(){
                           submitForm();
                         },
@@ -146,6 +149,9 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
     print(dateBirth);
     print(phoneNumber);
     print(currentLoc);
+    print(occupation.text);
+    print(company.text);    
+    print(aboutYou.text);
   }
 
   tapped(int step){
