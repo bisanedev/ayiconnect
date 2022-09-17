@@ -10,6 +10,8 @@ import '../../components/widget/header_stepper.dart';
 import './screen_form_one.dart';
 import './screen_form_two.dart';
 import './screen_form_three.dart';
+import './language_model.dart';
+import './services_model.dart';
 
 class StepRegisterScreen extends StatefulWidget {  
   const StepRegisterScreen({Key? key}) : super(key: key);
@@ -27,18 +29,31 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
   //VoidCallback? _onStepCancel;
   final GeolocatorPlatform _geolocatorPlatform = GeolocatorPlatform.instance;
   /*--- register form variable ---*/
-  int? role;
-  TextEditingController fullName = TextEditingController();
-  int? gender;
-  String? dateBirth;
-  String? phoneNumber;
-  String? currentLoc;
-  TextEditingController occupation = TextEditingController();
-  TextEditingController company = TextEditingController();    
-  List<int>? spoken;
-  int? service;
-  TextEditingController aboutYou = TextEditingController();  
+    int? role;
+    TextEditingController fullName = TextEditingController();
+    int? gender;
+    String? dateBirth;
+    String? phoneNumber;
+    String? currentLoc;
+    TextEditingController occupation = TextEditingController();
+    TextEditingController company = TextEditingController();    
+    List spoken = [];
+    int? service;
+    TextEditingController aboutYou = TextEditingController();  
   /*--- EOF register form variable ---*/
+  /*--- select&multi options datas variable ---*/
+  static List<Language> language = [
+    Language(id: 1, name: "English"),
+    Language(id: 2, name: "Mandarin"),
+    Language(id: 3, name: "Spanish"),
+  ];
+   static List<Services> services = [
+    Services(id: 1, name: "Child Care"),
+    Services(id: 2, name: "Senior Care"),
+    Services(id: 3, name: "Home Care"),
+    Services(id: 3, name: "Other Services"),
+  ];
+  /*--- EOF select&multi options  datas variable ---*/
   @override  
   void initState() {        
     super.initState();
@@ -124,7 +139,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                       title: Text('Professional Information',style: TextStyle(fontSize:  11,color:  _currentStep >= 2 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),
                       content: ScreenFormThree(
                         occupationController:occupation,
-                        companyController:company,
+                        companyController:company,                        
                         aboutYouController:aboutYou,
                         submitForm:(){
                           submitForm();
@@ -175,10 +190,10 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
     }
 
     final position = await _geolocatorPlatform.getCurrentPosition(); 
-    GetAddressFromLatLong(position);
+    getAddressFromLatLong(position);
   }
 
-  Future<void> GetAddressFromLatLong(Position position) async {
+  Future<void> getAddressFromLatLong(Position position) async {
     List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
     //print(placemarks);
     Placemark place = placemarks[0];

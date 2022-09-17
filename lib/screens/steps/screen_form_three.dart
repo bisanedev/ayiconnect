@@ -2,23 +2,32 @@ import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
 import '../../components/form/button.dart';
 import '../../components/form/Input_text.dart';
+import './language_model.dart';
+import './services_model.dart';
+
 
 class ScreenFormThree extends StatelessWidget { 
   final Function? submitForm; 
   final TextEditingController? occupationController;
   final TextEditingController? companyController;
+  final Language? languageItems;
+  final Services? serviceItems;
   final TextEditingController? aboutYouController;
-  
+
+
   const ScreenFormThree({
     Key? key,
     this.submitForm,
     this.occupationController,
-    this.companyController,
+    this.companyController,    
+    this.languageItems,
+    this.serviceItems,
     this.aboutYouController
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,  
       children:<Widget>[        
@@ -38,10 +47,7 @@ class ScreenFormThree extends StatelessWidget {
         const SizedBox(height: 15),
         Text('Fluently spoken language(s)',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
-        InputText(
-          hintText: "Add language",
-          controller: companyController,
-        ),  
+  
         const SizedBox(height: 15),
         Text('Prefered Service',style:TextStyle(fontSize: globals.fontSize ,color: globals.fontColor,fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),

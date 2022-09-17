@@ -5,10 +5,10 @@ The solution for the previous app :
 - I dont have the core source code the previous apps, so I cant comment much;
 
 The trouble form my app :
-- not yet adapting screen
-- best screen resolution is 1280x720
-- not yet complete , code from scratch , late cause does not have a code with the same design
-- menu current location , for manual input , the autocomplete input location , need google place api 
+- the packages flutter_screenutil not complete yet implement adapting screen
+- best only screen resolution is 1280x720
+- not yet complete , code from scratch , late because dont have a code with the same design
+- the current location menus , for manual input , the autocomplete input location , need google place api 
 
 ### Complete pages
 Page 1 :
@@ -20,3 +20,6 @@ Page 2 :
 ![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/2top.png?raw=true)
 
 ![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/2bottom.png?raw=true)
+
+Page 3 :
+

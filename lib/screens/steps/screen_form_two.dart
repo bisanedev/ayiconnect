@@ -143,7 +143,7 @@ class ScreenFormTwo extends StatelessWidget {
                 color: globals.firstColor,
                 borderRadius: 10,
                 onPressed: nextForm as void Function()?,
-                child: Text("Next",style:TextStyle(fontSize: 18 ,color: Colors.white,fontWeight: FontWeight.normal))                  
+                child: const Text("Next",style:TextStyle(fontSize: 18 ,color: Colors.white,fontWeight: FontWeight.normal))                  
             )
         )             
       ]
