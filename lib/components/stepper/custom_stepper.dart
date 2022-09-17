@@ -523,8 +523,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildHorizontal(int isCurrent,BuildContext context) {
-    double screenRatio = MediaQuery.of(context).devicePixelRatio;   
+  Widget _buildHorizontal(int isCurrent,BuildContext context) {    
     final List<Widget> children = <Widget>[      
       for (int i = 0; i < widget.steps.length; i += 1) ...<Widget>[
         InkResponse(
@@ -538,8 +537,8 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
               child: Center(child: _buildIcon(i,isCurrent)),
             ),
             Container(
-              margin: EdgeInsetsDirectional.only(bottom: screenRatio*10.0),
-              child: SizedBox(width:screenRatio*62,child: _buildHeaderText(i),)
+              margin: EdgeInsetsDirectional.only(bottom:  10.0),
+              child: SizedBox(width: 62,child: _buildHeaderText(i),)
             )
             ],
           )
@@ -554,11 +553,11 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: screenRatio*6.0),
+                    margin: EdgeInsets.symmetric(horizontal:  6.0),
                     height: 1.0,
                     color: Colors.white,
                   ),
-                  SizedBox(height:screenRatio*30),
+                  SizedBox(height: 30),
                 ],
               ),
             )
@@ -580,10 +579,10 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     return Column(
       children: <Widget>[
         Container(
-          height: screenRatio*80,
+          height:  110,
           color: globals.firstColor,
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: screenRatio*45.0),
+            margin: EdgeInsets.symmetric(horizontal:  45.0),
             child: Row(
               children: children,
             ),
@@ -592,7 +591,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
         Expanded(
           child: ListView(
             physics: widget.physics,
-            padding: EdgeInsets.all(screenRatio*24.0),
+            padding: EdgeInsets.all( 24.0),
             children: <Widget>[
               AnimatedSize(
                 curve: Curves.fastOutSlowIn,

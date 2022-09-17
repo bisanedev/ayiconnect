@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import './routes.gr.dart';
 
@@ -30,16 +31,23 @@ class _MyAppState  extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final router = getIt<AppRouter>();  
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'AyiConnect',      
-      routerDelegate: AutoRouterDelegate(router),        
-      routeInformationParser: router.defaultRouteParser(includePrefixMatches: true),     
-      theme: ThemeData(      
-        primarySwatch: Colors.cyan,        
-        visualDensity: VisualDensity.adaptivePlatformDensity,                  
-      ),
-    );
+    return ScreenUtilInit(
+      designSize: const Size(1280, 720),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context , child) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          title: 'AyiConnect',
+          routerDelegate: AutoRouterDelegate(router),
+          routeInformationParser: router.defaultRouteParser(includePrefixMatches: true),
+          theme: ThemeData(
+            primarySwatch: Colors.cyan,
+            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+          )          
+        );
+      }      
+    );   
   }
   
   @override
