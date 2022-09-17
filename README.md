@@ -11,5 +11,8 @@ The trouble form my app :
 - menu current location , for manual input , the autocomplete input location , need google place api 
 
 ### Complete pages
+Page 1 :
 ![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/1.png?raw=true)
-![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/2.png?raw=true)
+Page 2 :
+![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/2a.png?raw=true)
+![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/2b.png?raw=true)
