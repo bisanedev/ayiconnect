@@ -35,7 +35,7 @@ class PhoneNumber {
           number: number);
     } on InvalidCharactersException{
       rethrow;
-    } on Exception catch(e){
+    } on Exception {
       return PhoneNumber(countryISOCode: "",
           countryCode: "",
           number: "");
@@ -64,9 +64,9 @@ class PhoneNumber {
       throw NumberTooShortException();
     }
 
-    final _validPhoneNumber = RegExp(r'^[+0-9]*[0-9]*$');
+    final validPhoneNumber = RegExp(r'^[+0-9]*[0-9]*$');
 
-    if(!_validPhoneNumber.hasMatch(phoneNumber)){
+    if(!validPhoneNumber.hasMatch(phoneNumber)){
       throw InvalidCharactersException();
     }
 
@@ -80,6 +80,8 @@ class PhoneNumber {
         phoneNumber.startsWith(country.dialCode + country.regionCode));
   }
 
-  String toString() =>
-      'PhoneNumber(countryISOCode: $countryISOCode, countryCode: $countryCode, number: $number)';
+  // String toString() {
+  //   return 'PhoneNumber(countryISOCode: $countryISOCode, countryCode: $countryCode, number: $number)';
+  // }
+      
 }

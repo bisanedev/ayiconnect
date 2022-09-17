@@ -20,7 +20,7 @@ class StepRegisterScreen extends StatefulWidget {
 class _StepRegisterScreen extends State<StepRegisterScreen> {
   int _currentStep = 0;  
   VoidCallback? _onStepContinue;  
-  DateTime now = new DateTime.now();
+  DateTime now = DateTime.now();
   DateFormat calendarFormat = DateFormat("dd/MM/yyyy");
   DateTime? currentDateBirth;
   //VoidCallback? _onStepCancel;

@@ -237,7 +237,7 @@ class IntlPhoneField extends StatefulWidget {
   /// If unset, defaults to [EdgeInsets.zero].
   final EdgeInsets flagsButtonMargin;
 
-  IntlPhoneField({
+  const IntlPhoneField({
     Key? key,
     this.initialCountryCode,
     this.obscureText = false,
@@ -284,7 +284,7 @@ class IntlPhoneField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _IntlPhoneFieldState createState() => _IntlPhoneFieldState();
+  State<IntlPhoneField> createState() => _IntlPhoneFieldState();
 }
 
 class _IntlPhoneFieldState extends State<IntlPhoneField> {
@@ -363,7 +363,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
         ),
       ),
     );
-    if (this.mounted) setState(() {});
+    if (mounted) setState(() {});
   }
 
   @override
@@ -420,7 +420,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
 
         return validatorMessage;
       },
-      maxLength: widget.disableLengthCheck ? null : _selectedCountry.maxLength,
+      //maxLength: widget.disableLengthCheck ? null : _selectedCountry.maxLength,
       keyboardType: widget.keyboardType,
       inputFormatters: widget.inputFormatters,
       enabled: widget.enabled,
@@ -437,6 +437,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
       child: DecoratedBox(
         decoration: widget.dropdownDecoration,
         child: InkWell(
+          onTap: widget.enabled ? _changeCountry : null,
           borderRadius: widget.dropdownDecoration.borderRadius as BorderRadius?,
           child: Padding(
             padding: widget.flagsButtonPadding,
@@ -454,20 +455,19 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
                 if (widget.enabled &&
                     widget.showDropdownIcon &&
                     widget.dropdownIconPosition == IconPosition.trailing) ...[
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                   widget.dropdownIcon,
                 ],
                 if (widget.enabled &&
                     widget.showDropdownIcon &&
                     widget.dropdownIconPosition == IconPosition.leading) ...[
                   widget.dropdownIcon,
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                 ],
                 const SizedBox(width: 16)                
               ],
             ),
-          ),
-          onTap: widget.enabled ? _changeCountry : null,
+          )          
         ),
       ),
     );
