@@ -178,7 +178,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
     Placemark place = placemarks[0];
     // String Address = '${place.street}, ${place.subLocality}, ${place.locality}, ${place.postalCode}, ${place.country}';
     // print(Address);  
-    String Address = place.locality! +", "+ place.country!;  
+    String Address = place.subAdministrativeArea! +", "+ place.country!;  
     setState(() {
       currentLoc = Address;
     });
