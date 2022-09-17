@@ -12,6 +12,6 @@ The trouble form my app :
 
 ###Complete pages
 > Pages 1:
-![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/1.png)
+![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/1.png?raw=true)
 > Pages 2:
-![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/2.png)
+![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/2.png?raw=true)
