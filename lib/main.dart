@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:get_it/get_it.dart';
 import './routes.gr.dart';
 
 GetIt getIt = GetIt.instance;
-void main() {
+void main() {  
   getIt.registerSingleton<AppRouter>(AppRouter());
-  runApp(const MyApp());
+  /*--- Always PotraitUP ---*/
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((value) => runApp(const MyApp()));
+  /*--- EOF Always PotraitUP ---*/
+  //runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget{
   const MyApp({Key? key}) : super(key: key); 
-  @override   
+  @override    
   State<MyApp>createState() => _MyAppState();  
 }
 

@@ -99,7 +99,7 @@ const Color _kCircleActiveLight = Colors.white;
 const Color _kCircleActiveDark = Colors.black87;
 const Color _kDisabledLight = Colors.black38;
 const Color _kDisabledDark = Colors.white38;
-const double _kStepSize = 32.0;
+const double _kStepSize = 42.0;
 const double _kTriangleHeight = _kStepSize * 0.866025; // Triangle height. sqrt(3.0) / 2.0
 
 /// A material step used in [Stepper]. The step can have a title and subtitle,
@@ -303,7 +303,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
       case StepStateX.disabled:
         return Text(
           '${index + 1}',
-          style: TextStyle(color: globals.firstColor),
+          style: TextStyle(color: globals.firstColor,fontSize: 20.0),
         );
       case StepStateX.editing:
         return Icon(
@@ -315,7 +315,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
         return Icon(
           Icons.check,
           color: globals.firstColor,
-          size: 18.0,
+          size: 30.0,
         );
       case StepStateX.error:
         return const Text('!', style: _kStepStyle);
@@ -523,7 +523,8 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildHorizontal(int isCurrent) {
+  Widget _buildHorizontal(int isCurrent,BuildContext context) {
+    double screenRatio = MediaQuery.of(context).devicePixelRatio;   
     final List<Widget> children = <Widget>[      
       for (int i = 0; i < widget.steps.length; i += 1) ...<Widget>[
         InkResponse(
@@ -531,13 +532,14 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
           canRequestFocus: widget.steps[i].state != StepState.disabled,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
             SizedBox(
               child: Center(child: _buildIcon(i,isCurrent)),
             ),
             Container(
-              margin: const EdgeInsetsDirectional.only(bottom: 10.0),
-              child: SizedBox(width:62,child: _buildHeaderText(i),)
+              margin: EdgeInsetsDirectional.only(bottom: screenRatio*10.0),
+              child: SizedBox(width:screenRatio*62,child: _buildHeaderText(i),)
             )
             ],
           )
@@ -549,13 +551,14 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
               color: globals.firstColor,              
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 6.0),
+                    margin: EdgeInsets.symmetric(horizontal: screenRatio*6.0),
                     height: 1.0,
                     color: Colors.white,
                   ),
-                  const SizedBox(height: 40),
+                  SizedBox(height:screenRatio*30),
                 ],
               ),
             )
@@ -577,10 +580,10 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
     return Column(
       children: <Widget>[
         Container(
-          height: 100,
+          height: screenRatio*80,
           color: globals.firstColor,
           child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 45.0),
+            margin: EdgeInsets.symmetric(horizontal: screenRatio*45.0),
             child: Row(
               children: children,
             ),
@@ -589,7 +592,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
         Expanded(
           child: ListView(
             physics: widget.physics,
-            padding: const EdgeInsets.all(24.0),
+            padding: EdgeInsets.all(screenRatio*24.0),
             children: <Widget>[
               AnimatedSize(
                 curve: Curves.fastOutSlowIn,
@@ -619,7 +622,7 @@ class _StepperState extends State<StepperCustom> with TickerProviderStateMixin {
       }
       return true;
     }());    
-    return _buildHorizontal(widget.currentStep);
+    return _buildHorizontal(widget.currentStep,context);
   }
 }
 

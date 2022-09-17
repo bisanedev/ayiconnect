@@ -12,25 +12,25 @@ class ScreenFormOne extends StatelessWidget {
     /*--- Responsive & adaptive variable ---*/
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    double screenRatio = MediaQuery.of(context).devicePixelRatio;    
     /*--- EOF Responsive & adaptive variable ---*/  
     return Column(
-      children: <Widget>[
-          const SizedBox(height:20),
+      children: <Widget>[    
           Center(
             child:Container(
-              height: screenHeight * 0.3,
+              height: screenHeight * 0.4,
               width: screenWidth * 0.7,              
               padding: const EdgeInsets.all(8.0),       
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const Image(height: 150,width: 150,image: AssetImage('assets/images/helper.png')),
-                  const SizedBox(height:15),
-                  Text("Are you seeking care for your\nlove one?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize: 17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
-                  const SizedBox(height:10),
+                  Image(height: screenRatio*150 ,width: screenRatio*150,image: const AssetImage('assets/images/helper.png'), fit: BoxFit.fitWidth),
+                  SizedBox(height:screenRatio*15),
+                  Text("Are you seeking care for your\nlove one?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize: screenRatio*17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
+                  SizedBox(height:screenRatio*10),
                   SimpleElevatedButton(
-                    width: 200,
+                    width: screenRatio*200,
                     color: globals.firstColor,
                     elevation: 0,
                     borderRadius: 10,                  
@@ -39,34 +39,35 @@ class ScreenFormOne extends StatelessWidget {
                     },
                     child: roleSelected == 0 ? 
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.done,color:Colors.white,size:globals.fontSize),
-                        const SizedBox(width: 8),
-                        Text("Find a Helper",style:TextStyle(fontSize: globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal))
+                        Icon(Icons.done,color:Colors.white,size:screenRatio*globals.fontSize),
+                        SizedBox(width: screenRatio*8),
+                        Text("Find a Helper",style:TextStyle(fontSize: screenRatio*globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal))
                       ]
                     )
-                    :Text("Find a Helper",style:TextStyle(fontSize: globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal)),
+                    :Text("Find a Helper",style:TextStyle(fontSize: screenRatio*globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal)),
                   )
                 ]
               ),
             )
           ),
-          SizedBox(height:screenHeight * 0.1),
+          SizedBox(height:screenRatio*10),
           Center(
             child:Container(
-              height: screenHeight * 0.3,
-              width: screenWidth * 0.7,
+              height: screenHeight * 0.4,
+              width: screenWidth * 0.7,              
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const Image(height: 150,width: 150,image: AssetImage('assets/images/job.png')),
-                  const SizedBox(height:15),
-                  Text("Or you're looking for a care,\n housekeeper, or tutor job?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize: 17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
-                  const SizedBox(height:10),
+                  Image(height: screenRatio*150,width: screenRatio*150,image: const AssetImage('assets/images/job.png'),fit: BoxFit.fitWidth),
+                  SizedBox(height:screenRatio*15),
+                  Text("Or you're looking for a care,\n housekeeper, or tutor job?",softWrap:true,textAlign: TextAlign.center,style:TextStyle(fontSize:screenRatio* 17,color: globals.fontColor,fontWeight: FontWeight.normal)),                 
+                  SizedBox(height:screenRatio*10),
                   SimpleElevatedButton(
-                    width: 200,
+                    width: screenRatio*200,
                     color: globals.secondColor,
                     elevation: 0,
                     borderRadius: 10,                  
@@ -75,13 +76,14 @@ class ScreenFormOne extends StatelessWidget {
                     },
                     child: roleSelected == 1 ? 
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children:[
-                        Icon(Icons.done,color:Colors.white,size:globals.fontSize),
-                        const SizedBox(width: 8),
-                        Text("Find for a Job",style:TextStyle(fontSize: globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal))
+                        Icon(Icons.done,color:Colors.white,size:screenRatio*globals.fontSize),
+                        SizedBox(width: screenRatio*8),
+                        Text("Find for a Job",style:TextStyle(fontSize: screenRatio*globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal))
                       ]
                     )
-                    : Text("Find for a Job",style:TextStyle(fontSize: globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal)),
+                    : Text("Find for a Job",style:TextStyle(fontSize: screenRatio*globals.fontSize,color: Colors.white,fontWeight: FontWeight.normal)),
                   )
                 ]
               ),

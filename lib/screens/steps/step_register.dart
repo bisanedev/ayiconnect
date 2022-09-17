@@ -40,7 +40,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+    double screenRatio = MediaQuery.of(context).devicePixelRatio; 
     return Scaffold(
         appBar: const HeaderStepper(),
         body: Column(
@@ -59,7 +59,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                   },
                   steps: <StepX>[
                     StepX(
-                      title: Text('Select\nYour Role',style: TextStyle(fontSize: 11,color: _currentStep >= 0 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
+                      title: Text('Select\nYour Role',style: TextStyle(fontSize: screenRatio*11,color: _currentStep >= 0 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),                      
                       content:  ScreenFormOne(
                           roleSelected: role,
                           onPressed:(int value) {
@@ -71,7 +71,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                       state: _currentStep >= 1 ? StepStateX.complete : StepStateX.disabled,
                     ),
                     StepX(
-                      title: Text('Personal Information',style: TextStyle(fontSize: 11,color:  _currentStep >= 1 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),
+                      title: Text('Personal Information',style: TextStyle(fontSize: screenRatio*11,color:  _currentStep >= 1 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),
                       content: ScreenFormTwo(
                         fullNameController:fullName,                        
                         nextForm:() {
@@ -111,7 +111,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                       state: _currentStep >= 2 ? StepStateX.complete : StepStateX.disabled,
                     ),
                     StepX(
-                      title: Text('Professional Information',style: TextStyle(fontSize: 11,color:  _currentStep >= 2 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),
+                      title: Text('Professional Information',style: TextStyle(fontSize: screenRatio*11,color:  _currentStep >= 2 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),
                       content: ScreenFormThree(
                         submitForm:(){
                           submitForm();
