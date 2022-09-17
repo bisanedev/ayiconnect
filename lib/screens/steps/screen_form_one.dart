@@ -8,14 +8,18 @@ class ScreenFormOne extends StatelessWidget {
   const ScreenFormOne({Key? key,this.roleSelected,this.onPressed}) : super(key: key);
 
     @override
-  Widget build(BuildContext context) {   
+  Widget build(BuildContext context) { 
+    /*--- Responsive & adaptive variable ---*/
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    /*--- EOF Responsive & adaptive variable ---*/  
     return Column(
       children: <Widget>[
           const SizedBox(height:20),
           Center(
             child:Container(
-              height: 300,
-              width: 400,
+              height: screenHeight * 0.3,
+              width: screenWidth * 0.7,              
               padding: const EdgeInsets.all(8.0),       
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -47,11 +51,11 @@ class ScreenFormOne extends StatelessWidget {
               ),
             )
           ),
-          const SizedBox(height:20),
+          SizedBox(height:screenHeight * 0.1),
           Center(
             child:Container(
-              height: 300,
-              width: 400,
+              height: screenHeight * 0.3,
+              width: screenWidth * 0.7,
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

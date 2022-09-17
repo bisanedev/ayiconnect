@@ -14,8 +14,9 @@ class InputGender extends StatelessWidget {
   Widget build(BuildContext context) {    
     return SizedBox(      
       height: 55.0,
-      child: ListView(
-      scrollDirection: Axis.horizontal,      
+      child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,      
       children: [
         InkWell(
         onTap: () {

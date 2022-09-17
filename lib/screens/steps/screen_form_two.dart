@@ -55,7 +55,7 @@ class ScreenFormTwo extends StatelessWidget {
                   padding: const EdgeInsets.all(12.0),                 
               ),
               const SizedBox(height: 5),
-              Text('Add a profile to make it more personal,\nIt makes a difference!',textAlign: TextAlign.start,style:TextStyle(fontSize: 13 ,color: globals.formColorBorder,fontWeight: FontWeight.normal)),
+              Text('Add a profile to make it more personal,\nIt makes a difference!',textAlign: TextAlign.start,style:TextStyle(fontSize: 13 ,color: globals.fontColor,fontWeight: FontWeight.normal)),
             ],
           )
         )       
@@ -119,7 +119,7 @@ class ScreenFormTwo extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                   )
             ),
-            initialCountryCode: 'US',            
+            initialCountryCode: 'ID',            
             onChanged: (phone) {              
                 phoneOnChange(phone.completeNumber);
             },

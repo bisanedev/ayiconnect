@@ -36,10 +36,10 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
   List<int>? spoken;
   int? service;
   String? aboutYou;
-  /*--- end of register form variable ---*/
+  /*--- EOF register form variable ---*/
 
   @override
-  Widget build(BuildContext context) {    
+  Widget build(BuildContext context) {
 
     return Scaffold(
         appBar: const HeaderStepper(),
