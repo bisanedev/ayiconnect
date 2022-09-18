@@ -19,8 +19,6 @@ Page 2 :
 
 ![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/2top.png?raw=true)
 
-![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/2bottom.png?raw=true)
-
 Page 3 :
 
 ![](https://raw.githubusercontent.com/bisanedev/ayiconnect/main/screenshot/3.png?raw=true)
