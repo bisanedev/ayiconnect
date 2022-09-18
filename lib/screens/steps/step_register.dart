@@ -148,7 +148,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                         companyController:company, 
                         languageItems:language,
                         languageValue:spoken,
-                        languageOnChange:(List<Language> value){                                                                              
+                        languageOnChange:(List<Language> value){                            
                           setState(() {
                             spoken = value;
                           });
@@ -186,7 +186,7 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
     print(currentLoc);
     print(occupation.text);
     print(company.text);  
-    
+    print(spoken.join(', '));
     print(service?.name.toString());  
     print(aboutYou.text);
   }
