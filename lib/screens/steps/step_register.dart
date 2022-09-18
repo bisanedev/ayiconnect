@@ -4,7 +4,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
-import '../../globals.dart' as globals;
 import '../../components/stepper/custom_stepper.dart';
 import '../../components/widget/header_stepper.dart';
 import './screen_form_one.dart';
@@ -36,9 +35,9 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
     String? phoneNumber;
     String? currentLoc;
     TextEditingController occupation = TextEditingController();
-    TextEditingController company = TextEditingController();    
-    List spoken = [];
-    int? service;
+    TextEditingController company = TextEditingController();        
+    List<Language> spoken = [];    
+    Services? service;
     TextEditingController aboutYou = TextEditingController();  
   /*--- EOF register form variable ---*/
   /*--- select&multi options datas variable ---*/
@@ -47,12 +46,19 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
     Language(id: 2, name: "Mandarin"),
     Language(id: 3, name: "Spanish"),
   ];
-   static List<Services> services = [
+  static List<Services> services = [
     Services(id: 1, name: "Child Care"),
     Services(id: 2, name: "Senior Care"),
     Services(id: 3, name: "Home Care"),
     Services(id: 3, name: "Other Services"),
   ];
+  final List<String> items = [
+    'Item1',
+    'Item2',
+    'Item3',
+    'Item4',
+  ];
+  List<String> selectedItems = [];
   /*--- EOF select&multi options  datas variable ---*/
   @override  
   void initState() {        
@@ -139,7 +145,21 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
                       title: Text('Professional Information',style: TextStyle(fontSize:  11,color:  _currentStep >= 2 ? Colors.white:const Color(0xffe5e5ea)),textAlign: TextAlign.center),
                       content: ScreenFormThree(
                         occupationController:occupation,
-                        companyController:company,                        
+                        companyController:company, 
+                        languageItems:language,
+                        languageValue:spoken,
+                        languageOnChange:(List<Language> value){                                                                              
+                          setState(() {
+                            spoken = value;
+                          });
+                        },                       
+                        serviceItems:services,
+                        serviceValue:service,
+                        serviceOnChange:(Services? value){                                                    
+                          setState(() {
+                            service = value;
+                          });
+                        },
                         aboutYouController:aboutYou,
                         submitForm:(){
                           submitForm();
@@ -165,7 +185,9 @@ class _StepRegisterScreen extends State<StepRegisterScreen> {
     print(phoneNumber);
     print(currentLoc);
     print(occupation.text);
-    print(company.text);    
+    print(company.text);  
+    
+    print(service?.name.toString());  
     print(aboutYou.text);
   }
 

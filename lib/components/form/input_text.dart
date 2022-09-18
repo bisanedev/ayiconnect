@@ -42,7 +42,7 @@ class InputText extends StatelessWidget {
       autofocus: false,  
       maxLength:maxLength,    
       maxLines: maxLines,      
-      decoration: InputDecoration(
+      decoration: InputDecoration(        
         hintText: hintText,
         hintStyle: TextStyle(fontSize: globals.fontSizeOther, color: const Color.fromRGBO(0, 0, 0, 0.425)),
         errorText: error !=null ? errorMessage:null,     

@@ -1,10 +1,10 @@
 class Language {
-  final int? id;
-  final String? name;
+  late final int id;
+  late final String name;
 
   Language({
-    this.id,
-    this.name,
+    required this.id,
+    required this.name,
   });
   Map<String, dynamic> toJson() => {"id":id,"name": name};
 }
