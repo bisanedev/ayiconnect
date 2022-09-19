@@ -4,7 +4,7 @@ The solution for the previous app :
 - the error is not in the geolocation, but the navigation application error, and its not clear
 - I dont have the core source code the previous apps, so I cant comment much;
 
-The trouble from my app :
+The promblem from my app :
 - the packages flutter_screenutil not complete yet implement adapting screen
 - best only screen resolution is 1280x720
 - late because dont have a code with the same design
