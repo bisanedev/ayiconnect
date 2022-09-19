@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
-import '../../components/form/button.dart';
-import '../../components/form/Input_text.dart';
+import '../../components/form/forms.dart';
 import '../../components/dropdown/dropdown_button2.dart';
 import './language_model.dart';
 import './services_model.dart';

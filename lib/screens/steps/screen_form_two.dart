@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
-import '../../components/form/button.dart';
-import '../../components/form/Input_text.dart';
-import '../../components/form/Input_like_text.dart';
-import '../../components/form/Input_gender.dart';
+import '../../components/form/forms.dart';
 import '../../components/phone_field/intl_phone_field.dart';
 
 enum Gender { male, female, others }

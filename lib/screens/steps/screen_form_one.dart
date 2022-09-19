@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../globals.dart' as globals;
-import '../../components/form/button.dart';
+import '../../components/form/forms.dart';
 
 class ScreenFormOne extends StatelessWidget { 
   final Function(int)? onPressed;
